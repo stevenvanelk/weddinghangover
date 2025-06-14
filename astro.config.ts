@@ -25,6 +25,8 @@ import {
 
 // https://astro.build/config
 export default defineConfig({
+  base: '/weddinghangover/',
+
   image: {
     domains: ["webmention.io"],
   },
