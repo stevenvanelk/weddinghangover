@@ -1,0 +1,26 @@
+---
+import Layout from '../../../layouts/BlogLayout.astro';
+import { getCollection } from 'astro:content';
+
+const { params } = Astro;
+const currentPage = parseInt(params.page || '1');
+const postsPerPage = 5;
+
+const allPosts = await getCollection('blog');
+const totalPages = Math.ceil(allPosts.length / postsPerPage);
+
+const start = (currentPage - 1) * postsPerPage;
+const paginatedPosts = allPosts.slice(start, start + postsPerPage);
+---
+<Layout title="Blog">
+  <ul>
+    {paginatedPosts.map(post => (
+      <li><a href={`/blog/${post.slug}/`}>{post.data.title}</a></li>
+    ))}
+  </ul>
+
+  <nav>
+    {currentPage > 1 && <a href={`/blog/page/${currentPage - 1}`}>Previous</a>}
+    {currentPage < totalPages && <a href={`/blog/page/${currentPage + 1}`}>Next</a>}
+  </nav>
+</Layout>
