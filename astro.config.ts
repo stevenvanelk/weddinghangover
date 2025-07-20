@@ -48,7 +48,7 @@ export default defineConfig({
       /**
        * optional
        **/
-      // short_name: "Astro_Citrus",
+      // short_name: "WPH",
       description: siteConfig.description,
       lang: siteConfig.lang,
       icon: "public/icon.svg", // the source for generating favicon & icons
@@ -117,7 +117,7 @@ export default defineConfig({
   // https://docs.astro.build/en/guides/prefetch/
   prefetch: true,
   // ! Please remember to replace the following site property with your own domain
-  site: "http://astrocitrus.artemkutsan.pp.ua/",
+  site: "https://stevenvanelk.github.io/weddinghangover/",
   vite: {
     build: {
       sourcemap: true, // Source maps generation
