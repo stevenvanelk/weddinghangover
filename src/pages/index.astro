@@ -1,129 +1,72 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
-import SocialList from "@/components/SocialList.astro";
-import PostPreview from "@/components/blog/PostPreview.astro";
-import Note from "@/components/note/Note.astro";
-import { getAllPosts } from "@/data/post";
 import PageLayout from "@/layouts/Base.astro";
-import { collectionDateSort } from "@/utils/date";
+import SocialList from "@/components/SocialList.astro";
 
-// Posts
-const MAX_POSTS = 10;
-const allPosts = await getAllPosts();
-const allPostsByDate = allPosts
-	.sort(collectionDateSort)
-	.slice(0, MAX_POSTS) as CollectionEntry<"post">[];
-
-// Notes
-const MAX_NOTES = 2;
-const allNotes = await getCollection("note");
-const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
+const bannerImage = "/images/banner.jpg"; // Replace with Squarespace hero
+const communityImage = "/images/community.jpg"; // Replace with Facebook group image
+const supportImage = "/images/support.jpg"; // Replace with Patreon or review art
 ---
 
-<PageLayout meta={{ title: "Home" }}>
-	<!-- Hero section -->
-	<!-- Background blur -->
-	<div class="absolute top-0 left-1/2 md:top-[-15%] -ml-[50vw] min-h-screen w-screen pointer-events-none blur-3xl opacity-50 overflow-x-hidden">
-		<div class="absolute top-[10%] right-[-40%] w-[65%] h-full bg-gradient-to-b from-purple-300 via-blue-300 to-transparent rounded-full opacity-30 dark:opacity-10"></div>
-		<div class="absolute top-[10%] left-[-40%] w-[65%] h-full bg-gradient-to-b from-blue-300 via-pink-300 to-transparent rounded-full opacity-30 dark:opacity-10"></div>
-		<div class="absolute top-[-20%] left-[-50%] w-[85%] h-full bg-gradient-to-b from-indigo-300 via-orange-300 to-transparent rounded-full opacity-60 dark:opacity-10"></div>
-		<div class="absolute top-[-20%] right-[-50%] w-[85%] h-full bg-gradient-to-b from-orange-300 via-indigo-300 to-transparent rounded-full opacity-60 dark:opacity-10"></div>
-	</div>
-	<section class="max-w-xl mx-auto relative flex items-center justify-center h-screen -mt-24">
-		<div class="w-full text-center">
-			<span class="title text-3xl bg-gradient-to-r from-accent-two/85 via-accent-one/85 to-accent-two/85 dark:from-accent-two dark:via-accent-one dark:to-accent-two bg-clip-text text-transparent">
-				Introducing Astro Citrus!
-			</span>
-			<p class="mt-4 mb-4 text-lg font-medium">
-				Hi, I’m an Astro theme for building websites or blogs. To customize, add posts, or make it yours, click the GitHub icon below to visit my repo.
-			</p>
-			<div class="flex justify-center mb-4">
-				<SocialList />
-			</div>
-			<div class="flex justify-center space-x-4 mt-4">
-				<a href="/posts/" class="relative flex items-center justify-center h-8 px-4 rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two">
-					<span class="text-bgColor font-semibold">
-						Read Blog
-					</span>
-				</a>
+<PageLayout meta={{ title: "Wedding Photo Hangover - A Wedding Photography Podcast" }}>
+  <!-- Hero Banner -->
+  <section class="relative w-full h-[80vh] flex items-center justify-center text-center overflow-hidden">
+    <img src={bannerImage} alt="Wedding Photo Hangover" class="absolute inset-0 w-full h-full object-cover z-0 opacity-80" />
+    <div class="relative z-10 px-6 max-w-2xl">
+      <h1 class="text-4xl md:text-5xl font-bold text-white drop-shadow-lg">
+        An Irreverent Look at Photography
+      </h1>
+    </div>
+  </section>
 
-				<a href="/notes/wake-up/" class="relative flex items-center justify-center h-8 px-4 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest">
-					<span class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two">
-						Wake up
-					</span>
-				</a>
-			</div>
-		</div>
-	</section>
+  <!-- Intro -->
+  <section class="max-w-3xl mx-auto text-center my-12 px-4">
+    <p class="text-lg">
+      We’re a podcast and a blog. Presumably this is all about wedding photography, but in reality it’s just about photography in general.<br />
+      <em>“Sell your camera. Take a vacation. Rethink your life.”</em><br />
+      If those words don’t resonate deep within your soul, this probably isn’t the place for you.
+    </p>
+  </section>
 
-	<!-- Posts Section -->
-	<section aria-label="Blog post list" class="'mt-[-100vh] pt-[100vh]'">
-		<h2 class="title mb-6 text-xl text-accent-two">
-			<a href="/posts/">Posts</a>
-		</h2>
-		<ul class="space-y-4 md:space-y-2" role="list">
-			{
-				allPostsByDate.map((p) => (
-					<li class="gap-2 sm:grid-cols-[auto_1fr]">
-						<PostPreview post={p} />
-					</li>
-				))
-			}
-		</ul>
-	</section>
+  <!-- Podcast Embed -->
+  <section class="flex justify-center my-12 px-4">
+    <iframe
+      class="w-full max-w-xl aspect-video"
+      src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fanchor.fm%2Fweddingphotohangover%2Fembed"
+      title="Wedding Photo Hangover Podcast"
+      frameborder="0"
+      allow="autoplay; fullscreen"
+      allowfullscreen
+    ></iframe>
+  </section>
 
-	<!-- Notes Section -->
-	{
-		latestNotes.length > 0 && (
-			<section class="mt-12">
-				<h2 class="title mb-6 text-accent-two">
-					<a href="/notes/">Notes</a>
-				</h2>
-				<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
-					{
-						latestNotes.map((note) => (
-							<div>
-								<Note note={note} as="h4" isPreview />
-							</div>
-						))
-					}
-				</div>
-			</section>
-		)
-	}
+  <!-- Feature Cards -->
+  <section class="grid grid-cols-1 sm:grid-cols-2 gap-8 my-16 px-4">
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+      <img src={communityImage} alt="Community" class="w-full h-64 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-bold mb-2">Community</h3>
+        <p class="mb-4">Find other photographers with a sense of humor looking to make friends. We have an awesome Facebook group for wedding photographers. You don’t have to listen to the podcast to join.</p>
+        <a href="/community.html" class="inline-block bg-accent-one text-white px-4 py-2 rounded">Join Us</a>
+      </div>
+    </div>
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+      <img src={supportImage} alt="Support" class="w-full h-64 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-bold mb-2">Support</h3>
+        <p class="mb-4">Already a fan of the podcast and blog? Learn how to support our work—whether it's Patreon, reviews, or just sharing an episode.</p>
+        <a href="/support.html" class="inline-block bg-accent-one text-white px-4 py-2 rounded">Support Us</a>
+      </div>
+    </div>
+  </section>
 
-	<!-- Debug -->
-	<!--
-	<div class="flex justify-between flex-wrap gap-y-1.5 mt-6 text-sm font-medium">
-		<div class="text-center content-center h-10 w-10 bg-color-50"><span class="text-textColor">50</span></div>
-		<div class="text-center content-center h-10 w-10 bg-color-75"><span class="text-textColor">75</span></div>
-		<div class="text-center content-center h-10 w-10 bg-color-100"><span class="text-textColor">100</span></div>
-		<div class="text-center content-center h-10 w-10 bg-color-150"><span class="text-textColor">150</span></div>
-		<div class="text-center content-center h-10 w-10 bg-color-200"><span class="text-textColor">200</span></div>
-		<div class="text-center content-center h-10 w-10 bg-color-250"><span class="text-textColor">250</span></div>
-		<div class="text-center content-center h-10 w-10 bg-color-300"><span class="text-textColor">300</span></div>
-		<div class="text-center content-center h-10 w-10 bg-color-350"><span class="text-textColor">350</span></div>
-		<div class="text-center content-center h-10 w-10 bg-color-400">
-			<span class="text-textColor">400</span>
-			<span class="text-bgColor">400</span>
-		</div>
-		<div class="text-center content-center h-10 w-10 bg-color-450">
-			<span class="text-textColor">450</span>
-			<span class="text-bgColor">450</span>
-		</div>
-		<div class="text-center content-center h-10 w-10 bg-color-500">
-			<span class="text-textColor">500</span>
-			<span class="text-bgColor">500</span>
-		</div>
-		<div class="text-center content-center h-10 w-10 bg-color-550"><span class="text-bgColor">550</span></div>
-		<div class="text-center content-center h-10 w-10 bg-color-600"><span class="text-bgColor">600</span></div>
-		<div class="text-center content-center h-10 w-10 bg-color-650"><span class="text-bgColor">650</span></div>
-		<div class="text-center content-center h-10 w-10 bg-color-700"><span class="text-bgColor">700</span></div>
-		<div class="text-center content-center h-10 w-10 bg-color-750"><span class="text-bgColor">750</span></div>
-		<div class="text-center content-center h-10 w-10 bg-color-800"><span class="text-bgColor">800</span></div>
-		<div class="text-center content-center h-10 w-10 bg-color-850"><span class="text-bgColor">850</span></div>
-		<div class="text-center content-center h-10 w-10 bg-color-900"><span class="text-bgColor">900</span></div>
-	</div>
-	-->
+  <!-- Callout -->
+  <section class="text-center my-16 px-4 max-w-2xl mx-auto">
+    <h2 class="text-2xl font-bold">Why did you scroll down this far?</h2>
+    <p class="mt-2">Seriously, the latest episode and all the nav links are at the top. But if you're still here, maybe poke around a little more and convince Google we’re worth ranking.</p>
+  </section>
+
+  <!-- Social Icons -->
+  <div class="flex justify-center mb-8">
+    <SocialList />
+  </div>
 </PageLayout>
-
