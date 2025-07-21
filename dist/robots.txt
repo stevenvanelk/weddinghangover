@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://stevenvanelk.github.io/weddinghangover/sitemap-index.xml

@@ -1,65 +1,11 @@
 ---
-import PageLayout from "@/layouts/Base.astro";
-import SocialList from "@/components/SocialList.astro";
+import Welcome from '../components/Welcome.astro';
+import Layout from '../layouts/Layout.astro';
 
-const bannerImage = "/images/index/wedding-hangover-hero-image.webp";
-const communityImage = "/images/index/wph-community.webp";
-const supportImage = "/images/index/wph-patreon.webp";
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<PageLayout meta={{ title: "Wedding Photo Hangover - A Wedding Photography Podcast" }}>
-  <!-- Hero Banner -->
-  <section class="relative w-full h-[80vh] flex items-center justify-center text-center overflow-hidden">
-    <img src={bannerImage} alt="Wedding Photo Hangover" class="absolute inset-0 w-full h-full object-cover z-0 opacity-80" />
-    <div class="relative z-10 px-6 max-w-2xl">
-      <h1 class="text-4xl md:text-5xl font-bold text-white drop-shadow-lg">
-        An Irreverent Look at Photography
-      </h1>
-    </div>
-  </section>
-
-  <!-- Intro -->
-  <section class="max-w-3xl mx-auto text-center my-12 px-4">
-    <p class="text-lg">
-      We’re a podcast and a blog. Presumably this is all about wedding photography, but in reality it’s just about photography in general.<br />
-      <em>“Sell your camera. Take a vacation. Rethink your life.”</em><br />
-      If those words don’t resonate deep within your soul, this probably isn’t the place for you.
-    </p>
-  </section>
-
-  <!-- Podcast Embed -->
-  <section class="flex justify-center my-12 px-4">
-    <iframe src="https://open.spotify.com/embed/show/09hCjT9XXAKzGin8bkLG3a?utm_source=generator" width="100%" height="232" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-  </section>
-
-  <!-- Feature Cards -->
-  <section class="grid grid-cols-1 sm:grid-cols-2 gap-8 my-16 px-4">
-    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-      <img src={communityImage} alt="Community" class="w-full h-64 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-bold mb-2">Community</h3>
-        <p class="mb-4">Find other photographers with a sense of humor looking to make friends. We have an awesome Facebook group for wedding photographers. You don’t have to listen to the podcast to join.</p>
-        <a href="/community.html" class="inline-block bg-accent-one text-white px-4 py-2 rounded">Join Us</a>
-      </div>
-    </div>
-    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-      <img src={supportImage} alt="Support" class="w-full h-64 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-bold mb-2">Support</h3>
-        <p class="mb-4">Already a fan of the podcast and blog? Learn how to support our work—whether it's Patreon, reviews, or just sharing an episode.</p>
-        <a href="/support.html" class="inline-block bg-accent-one text-white px-4 py-2 rounded">Support Us</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Callout -->
-  <section class="text-center my-16 px-4 max-w-2xl mx-auto">
-    <h2 class="text-2xl font-bold">Why did you scroll down this far?</h2>
-    <p class="mt-2">Seriously, the latest episode and all the nav links are at the top. But if you're still here, maybe poke around a little more and convince Google we’re worth ranking.</p>
-  </section>
-
-  <!-- Social Icons -->
-  <div class="flex justify-center mb-8">
-    <SocialList />
-  </div>
-</PageLayout>
+<Layout>
+	<Welcome />
+</Layout>
