@@ -1,11 +1,86 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from '../layouts/Layout.astro'; // or your custom layout if defined
 ---
 
 <Layout>
-	<Welcome />
+  <head>
+    <title>Wedding Photo Hangover - A Wedding Photography Podcast</title>
+    <meta name="description" content="Looking for a wedding photography podcast that isn't boring? Join us each week for an irreverent look at photography." />
+    <meta property="og:image" content="https://static1.squarespace.com/static/5b9ac0aa50a54faef024c950/t/5b9adcdb898583a64c39bee6/1536875741888/WPH_Wide_Clean.jpg?format=1500w" />
+    <!-- Add favicon if needed -->
+  </head>
+
+  <header>
+    <img src="https://images.squarespace-cdn.com/content/v1/5b9ac0aa50a54faef024c950/1536875387378-KGSJ2SGOKP0QQOGXJMMR/WPH_CleanNB_LOGO.png" alt="Wedding Photo Hangover Logo" />
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/episodes">Podcast</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/community">Community</a></li>
+        <li><a href="/about-steve">About Steve</a></li>
+        <li><a href="/support">Support</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2><em>an Irreverent Look at Photography.</em></h2>
+      <p>
+        We’re a podcast and a blog. Presumably this is all about wedding photography, but in reality it’s just about photography in general. 
+        If you find yourself here, heed these wise words before looking any further: 
+        “Sell your camera. Take a vacation. Rethink your life.” 
+        If those words don’t resonate deep within your soul, this probably isn’t the place for you.
+      </p>
+    </section>
+
+    <section>
+      <iframe
+        width="400"
+        height="102"
+        scrolling="no"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+        title="Wedding Photo Hangover Podcast"
+        src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fanchor.fm%2Fweddingphotohangover%2Fembed&display_name=Anchor+FM+Inc.&url=https%3A%2F%2Fpodcasters.spotify.com%2Fpod%2Fshow%2Fweddingphotohangover&image=https%3A%2F%2Fd3t3ozftmdmh3i.cloudfront.net%2Fstaging%2Fpodcast_uploaded_nologo400%2F805714%2F805714-1532296863943-3307a63a7f17f.jpg&key=c6502efcb3c84824bc6c1f27d683be13&type=text%2Fhtml&schema=spotify"
+      ></iframe>
+      <p>An irreverent look at photography with Steve and Dustin (and sometimes guests). Listen to the most recent episode here or search the site for a specific episode.</p>
+    </section>
+
+    <section>
+      <h3>Community</h3>
+      <p>
+        Find other photographers with a sense of humor. We have an awesome Facebook group for wedding photographers. 
+        You don’t have to listen to our podcast to be a part of the group.
+      </p>
+      <a href="/community">Join Us</a>
+    </section>
+
+    <section>
+      <h3>Support</h3>
+      <p>
+        Already a fan? You can support our work via Patreon, or just leave a review or share an episode. Everything helps.
+      </p>
+      <a href="/support">Support Us</a>
+    </section>
+
+    <section>
+      <h2 style="text-align:center;">Why did you scroll down this far?</h2>
+      <p style="text-align:center;">
+        Seriously, the latest episode and navigation is at the top. Tap around and convince Google we’re good, good content. Or scroll back up.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <ul>
+      <li><a href="https://www.facebook.com/WeddingPhotoHangover/">Facebook</a></li>
+      <li><a href="http://instagram.com/weddingphotohangover">Instagram</a></li>
+      <li><a href="https://www.tiktok.com/@weddingphotohangover">TikTok</a></li>
+      <li><a href="https://www.youtube.com/channel/UCdMqr4HWdKLAEevkr3XLYVA">YouTube</a></li>
+      <li><a href="https://mastodon.cloud/@weddinghangover" rel="me">Mastodon</a></li>
+    </ul>
+  </footer>
 </Layout>
