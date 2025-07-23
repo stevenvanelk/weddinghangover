@@ -1,7 +1,6 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Cookiebanner from '../components/Cookiebanner.astro';
 import '../styles/global.css';
 ---
 <!doctype html>
@@ -13,15 +12,16 @@ import '../styles/global.css';
 		<link rel="preload" href="/fonts/EBGaramond-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin="anonymous" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<meta property="og:title" content="Wedding Photo Hangover" />
+		<meta property="og:description" content="An irreverent look at wedding photography." />
+		<meta property="og:image" content="/images/header/WPH_CleanNB_LOGO.webp" />
 		<slot name="head" />
 	</head>
 	<body>
 		<Header />
-		<Cookiebanner />
 		<slot />
 		<Footer />
 		<script src="/js/headerScroll.js" defer></script>
-		<script src="/js/cookieBanner.js" defer></script>
 		<script src="/js/script.js" defer></script>
 	</body>
 </html>

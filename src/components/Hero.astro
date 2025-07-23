@@ -1,0 +1,25 @@
+---
+export interface Props {
+  title: string;
+  background: string;
+  height?: string;
+  overlay?: boolean;
+}
+
+const {
+  title,
+  background,
+  height = '40vh',
+  overlay = true
+} = Astro.props;
+---
+
+<section class="hero" style={`background-image: url(${background}); height: ${height};`}>
+  {overlay && (
+    <div class="overlay"></div>
+  )}
+
+  <div class="hero-content">
+    <h2 class="hero-title">{title}</h2>
+  </div>
+</section>

@@ -1,61 +1,92 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 ---
 
 <Layout>
-  <head>
-    <title>Wedding Photo Hangover - A Wedding Photography Podcast</title>
-    <meta name="description" content="Looking for a wedding photography podcast that isn't boring? Join us each week for an irreverent look at photography." />
-	<meta property="og:image" content="/images/header/WPH_CleanNB_LOGO.webp" />
-  </head>
+  <head slot="head">
+  <title>Wedding Photo Hangover - A Wedding Photography Podcast</title>
+  <link rel="canonical" href="https://weddinghangover.com/" />
+  <meta name="description" content="Looking for a wedding photography podcast that isn't boring? Then join us every week as we take an irreverent look at photography! This podcast, like aspirin, will help cure you of your wedding hangover." />
+  <meta property="og:site_name" content="Wedding Photo Hangover - A Wedding Photography Podcast" />
+  <meta property="og:title" content="Wedding Photo Hangover - A Wedding Photography Podcast" />
+  <meta property="og:description" content="Looking for a wedding photography podcast that isn't boring? Then join us every week as we take an irreverent look at photography! This podcast, like aspirin, will help cure you of your wedding hangover." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://weddinghangover.com/" />
+  <meta property="og:image" content="/images/global/WPH_Wide_CleanNB.webp" />
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="843" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wedding Photo Hangover - A Wedding Photography Podcast" />
+  <meta name="twitter:description" content="Looking for a wedding photography podcast that isn't boring? Then join us every week as we take an irreverent look at photography! This podcast, like aspirin, will help cure you of your wedding hangover." />
+  <meta name="twitter:image" content="/images/global/WPH_Wide_CleanNB.webp" />
+  <meta name="twitter:url" content="https://weddinghangover.com/" />
+  <meta itemprop="name" content="Wedding Photo Hangover - A Wedding Photography Podcast" />
+  <meta itemprop="description" content="Looking for a wedding photography podcast that isn't boring? Then join us every week as we take an irreverent look at photography! This podcast, like aspirin, will help cure you of your wedding hangover." />
+  <meta itemprop="url" content="https://weddinghangover.com/" />
+  <meta itemprop="image" content="/images/global/WPH_Wide_CleanNB.webp" />
+</head>
+
 
   <main>
-    <section>
-      <h2><em>an Irreverent Look at Photography.</em></h2>
-      <p>
-        We’re a podcast and a blog. Presumably this is all about wedding photography, but in reality it’s just about photography in general. 
-        If you find yourself here, heed these wise words before looking any further: 
-        “Sell your camera. Take a vacation. Rethink your life.” 
-        If those words don’t resonate deep within your soul, this probably isn’t the place for you.
-      </p>
-    </section>
+    <Hero 
+      title="An Irreverent Look at Photography" 
+      background="/images/index/wedding-hangover-hero-image.webp" 
+    />
 
-    <section>
-      <iframe
-        width="400"
-        height="102"
-        scrolling="no"
-        frameborder="0"
-        allow="autoplay; fullscreen"
-        allowfullscreen
-        title="Wedding Photo Hangover Podcast"
-        src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fanchor.fm%2Fweddingphotohangover%2Fembed&display_name=Anchor+FM+Inc.&url=https%3A%2F%2Fpodcasters.spotify.com%2Fpod%2Fshow%2Fweddingphotohangover&image=https%3A%2F%2Fd3t3ozftmdmh3i.cloudfront.net%2Fstaging%2Fpodcast_uploaded_nologo400%2F805714%2F805714-1532296863943-3307a63a7f17f.jpg&key=c6502efcb3c84824bc6c1f27d683be13&type=text%2Fhtml&schema=spotify"
-      ></iframe>
-      <p>An irreverent look at photography with Steve and Dustin (and sometimes guests). Listen to the most recent episode here or search the site for a specific episode.</p>
-    </section>
+    <div class="content-container">
 
-    <section>
-      <h3>Community</h3>
-      <p>
-        Find other photographers with a sense of humor. We have an awesome Facebook group for wedding photographers. 
-        You don’t have to listen to our podcast to be a part of the group.
-      </p>
-      <a href="/community">Join Us</a>
-    </section>
+      <section>
+        <p>
+          We’re a podcast and a blog. Presumably this is all about wedding photography, but in reality it’s just about photography in general.
+          If you find yourself here, heed these wise words before looking any further:
+          “Sell your camera. Take a vacation. Rethink your life.”
+          If those words don’t resonate deep within your soul, this probably isn’t the place for you.
+        </p>
+      </section>
 
-    <section>
-      <h3>Support</h3>
-      <p>
-        Already a fan? You can support our work via Patreon, or just leave a review or share an episode. Everything helps.
-      </p>
-      <a href="/support">Support Us</a>
-    </section>
+      <section>
+        <iframe
+          width="500"
+          height="110"
+          scrolling="no"
+          frameborder="0"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+          title="Wedding Photo Hangover Podcast"
+          src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fanchor.fm%2Fweddingphotohangover%2Fembed&display_name=Anchor+FM+Inc.&url=https%3A%2F%2Fpodcasters.spotify.com%2Fpod%2Fshow%2Fweddingphotohangover&image=https%3A%2F%2Fd3t3ozftmdmh3i.cloudfront.net%2Fstaging%2Fpodcast_uploaded_nologo400%2F805714%2F805714-1532296863943-3307a63a7f17f.jpg&key=c6502efcb3c84824bc6c1f27d683be13&type=text%2Fhtml&schema=spotify"
+        ></iframe>
+        <p>An irreverent look at photography with Steve and Dustin (and sometimes guests). Listen to the most recent episode here or search the site for a specific episode.</p>
+      </section>
 
-    <section>
-      <h2 style="text-align:center;">Why did you scroll down this far?</h2>
-      <p style="text-align:center;">
-        Seriously, the latest episode and navigation is at the top. Tap around and convince Google we’re good, good content. Or scroll back up.
-      </p>
-    </section>
+      <section class="card card-left">
+        <img src="/images/index/wph-community.webp" alt="Wedding Photo Hangover Community">
+        <div class="card-content">
+          <h3>Community</h3>
+          <p>
+            Find other photographers with a sense of humor looking to make friends.We have an awesome Facebook group for wedding photographers. It’s the most supportive and most hilarious group of people you’ll find online. You don’t have to listen to our photography podcast to be a part of the group.
+          </p>
+          <a href="/community" class="button-link">Join Us</a>
+        </div>
+      </section>
+
+      <section class="card card-right">
+        <img src="/images/index/wph-patreon.webp" alt="Support Wedding Photo Hangover on Patreon">
+        <div class="card-content">
+          <h3>Support</h3>
+          <p>
+            Already a fan of the photography podcast and blog? Take the next step and find out how you can support our work. We have a Patreon if you want to support us directly, but you can also just leave us a review or share an episode. Everything helps.
+          </p>
+          <a href="/support" class="button-link">Support Us</a>
+        </div>
+      </section>
+
+      <section>
+        <h2 style="text-align:center;">Why did you scroll down this far?</h2>
+        <p style="text-align:center;">
+          Seriously, the latest episode and navigation is at the top. Tap around and convince Google we’re good, good content. Or scroll back up.
+        </p>
+      </section>
+    </div>
   </main>
 </Layout>

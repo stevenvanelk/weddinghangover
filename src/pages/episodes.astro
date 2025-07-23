@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import Hero from '../components/Hero.astro';
+
+const episodes = await getCollection('episodes');
+---
+
+<Layout>
+  <main>
+    <Hero 
+      title="Podcast Episodes" 
+      background="/images/episodes/wph-podcast-hero.webp" 
+    />
+    <div class="content-container">
+      <h1>Podcast Episodes</h1>
+      <ul>
+          {episodes.map((ep: CollectionEntry<'episodes'>) => (
+              <li>
+                  <a href={`/episodes/${ep.slug}/`}>{ep.data.title}</a> — {ep.data.pubDate.toLocaleDateString()}
+              </li>
+          ))}
+      </ul>
+    </div>
+  </main>
+</Layout>
