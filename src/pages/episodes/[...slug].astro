@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { getEntry, getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Hero from "../../components/Hero.astro";
+import "../../styles/blogStyles.css";
 
 const slug = Array.isArray(Astro.params.slug)
   ? Astro.params.slug.join("/")
@@ -32,15 +33,17 @@ export async function getStaticPaths() {
 <Layout>
   <main>
     <Hero title={episode.data.title} background={episode.data.image} />
-    <div class="content-container">
-      <h1>{episode.data.title}</h1>
-      <p><em>{episode.data.pubDate.toLocaleDateString()}</em></p>
+    <div class="content-container-blog">
+      <div class="rich-content">
+        <h1 class="post-title">{episode.data.title}</h1>
+        <p class="date-published">{episode.data.pubDate.toLocaleDateString()}</p>
 
-      <p>{episode.data.description}</p>
+        <p>{episode.data.description}</p>
 
-      <article>
-        <Content />
-      </article>
+        <article>
+          <Content />
+        </article>
+      </div>
     </div>
   </main>
 </Layout>

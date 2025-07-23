@@ -33,15 +33,14 @@ export async function getStaticPaths() {
 <Layout>
   <main>
     <Hero title={post.data.title} background={post.data.image} />
-    <div class="content-container">
-      <h1>{post.data.title}</h1>
-      <p><em>{post.data.pubDate.toLocaleDateString()}</em></p>
-
-      <p>{post.data.description}</p>
-
-      <article class="rich-content">
-        <Content />
-      </article>
+    <div class="content-container-blog">
+      <div class="rich-content">
+        <h1 class="post-title">{post.data.title}</h1>
+        <p class="date-published">{post.data.pubDate.toLocaleDateString()}</p>
+        <article>
+          <Content />
+        </article>
+      </div>
     </div>
   </main>
 </Layout>
