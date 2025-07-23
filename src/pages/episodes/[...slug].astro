@@ -1,0 +1,46 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getEntry, getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Hero from "../../components/Hero.astro";
+
+const slug = Array.isArray(Astro.params.slug)
+  ? Astro.params.slug.join("/")
+  : Astro.params.slug;
+
+const episode = await getEntry("episodes", slug);
+
+if (!episode) {
+  throw new Error(`Episode not found for slug: ${slug}`);
+}
+
+const { Content } = await episode.render();
+
+export async function getStaticPaths() {
+  const posts = (await getCollection(
+    "episodes"
+  )) as CollectionEntry<"episodes">[];
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.slug, // ← MUST be a string!
+    },
+  }));
+}
+---
+
+<Layout>
+  <main>
+    <Hero title={episode.data.title} background={episode.data.image} />
+    <div class="content-container">
+      <h1>{episode.data.title}</h1>
+      <p><em>{episode.data.pubDate.toLocaleDateString()}</em></p>
+
+      <p>{episode.data.description}</p>
+
+      <article>
+        <Content />
+      </article>
+    </div>
+  </main>
+</Layout>

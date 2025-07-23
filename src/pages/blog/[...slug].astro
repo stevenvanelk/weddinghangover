@@ -1,0 +1,47 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getEntry, getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Hero from "../../components/Hero.astro";
+import "../../styles/blogStyles.css";
+
+const slug = Array.isArray(Astro.params.slug)
+  ? Astro.params.slug.join("/")
+  : Astro.params.slug;
+
+const post = await getEntry("blog", slug);
+
+if (!post) {
+  throw new Error(`Blog post not found for slug: ${slug}`);
+}
+
+const { Content } = await post.render();
+
+export async function getStaticPaths() {
+  const posts = (await getCollection("blog")) as CollectionEntry<"blog">[];
+  return posts.map((post) => {
+    const slugParts = post.slug.split("/");
+    return {
+      params: {
+        slug: slugParts.length === 1 ? post.slug : slugParts,
+      },
+    };
+  });
+}
+---
+
+<Layout>
+  <main>
+    <Hero title={post.data.title} background={post.data.image} />
+    <div class="content-container">
+      <h1>{post.data.title}</h1>
+      <p><em>{post.data.pubDate.toLocaleDateString()}</em></p>
+
+      <p>{post.data.description}</p>
+
+      <article class="rich-content">
+        <Content />
+      </article>
+    </div>
+  </main>
+</Layout>
