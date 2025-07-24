@@ -101,6 +101,10 @@
     text-align: center !important;
 }
 
+.rich-content p:has(> a:first-child):has(> a:nth-child(2)) {
+    text-align: center;
+}
+
 .date-published {
     font-family: 'Garamond', Georgia, 'Times New Roman', Times, serif !important;
     background-color: transparent !important;
@@ -117,4 +121,30 @@
     /* Centers the content horizontally */
     padding: 0 1rem;
     /* Adds some padding to the left and right */
+}
+
+.media.full {
+    margin: 2rem 0;
+}
+
+.iframe.html {
+    max-width: 100%;
+    text-align: center;
+}
+
+.embedly-embed {
+    width: 100%;
+    aspect-ratio: 400 / 102;
+    /* or 16 / 9 for YouTube */
+    height: auto !important;
+    max-height: 150px !important;
+    /* optional: to prevent huge embeds on large screens */
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+    .embedly-embed {
+        height: 100px;
+    }
 }

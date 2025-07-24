@@ -38,8 +38,6 @@ export async function getStaticPaths() {
         <h1 class="post-title">{episode.data.title}</h1>
         <p class="date-published">{episode.data.pubDate.toLocaleDateString()}</p>
 
-        <p>{episode.data.description}</p>
-
         <article>
           <Content />
         </article>
