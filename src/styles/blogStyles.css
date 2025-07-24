@@ -1,3 +1,40 @@
+article {
+    margin-bottom: 2rem !important;
+}
+
+/* Top Images */
+
+figure {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+figure img {
+    display: block;
+    max-width: 100%;
+    margin-bottom: 0;
+    /* reduce space between image and caption */
+}
+
+figcaption {
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
+    margin: 0;
+    /* remove default margins */
+    line-height: 1.4;
+}
+
+figcaption a {
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
+    margin: 0;
+    /* remove default margins */
+    line-height: 1.4;
+    text-decoration: underline;
+}
+
 .rich-content {
     max-width: 100%;
     line-height: 1.7;

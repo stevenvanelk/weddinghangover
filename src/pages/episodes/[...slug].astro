@@ -4,6 +4,7 @@ import { getEntry, getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Hero from "../../components/Hero.astro";
 import "../../styles/blogStyles.css";
+import SEO from "../../components/SEO.astro";
 
 const slug = Array.isArray(Astro.params.slug)
   ? Astro.params.slug.join("/")
@@ -31,12 +32,39 @@ export async function getStaticPaths() {
 ---
 
 <Layout>
+  <head slot="head">
+    <SEO
+      title={episode.data.title}
+      description={episode.data.description}
+      image={episode.data.image}
+      pubDate={episode.data.pubDate}
+      canonicalUrl={`/episodes/${episode.slug}`}
+    />
+  </head>
   <main>
     <Hero title={episode.data.title} background={episode.data.image} />
     <div class="content-container-blog">
       <div class="rich-content">
         <h1 class="post-title">{episode.data.title}</h1>
         <p class="date-published">{episode.data.pubDate.toLocaleDateString()}</p>
+        {episode.data.image && (
+          <figure>
+            <img src={episode.data.image} alt={episode.data.title} />
+            {(episode.data.imageCaptionText || episode.data.imageCaptionLinkText) && (
+              <figcaption>
+                {episode.data.imageCaptionText}
+                {episode.data.imageCaptionLinkText && episode.data.imageCaptionLinkUrl && (
+                  <>
+                    {' '}
+                    <a href={episode.data.imageCaptionLinkUrl} target="_blank">
+                      {episode.data.imageCaptionLinkText}
+                    </a>
+                  </>
+                )}
+              </figcaption>
+            )}
+          </figure>
+        )}
 
         <article>
           <Content />

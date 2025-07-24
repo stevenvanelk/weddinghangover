@@ -4,6 +4,8 @@ import { getEntry, getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Hero from "../../components/Hero.astro";
 import "../../styles/blogStyles.css";
+import SEO from "../../components/SEO.astro";
+
 
 const slug = Array.isArray(Astro.params.slug)
   ? Astro.params.slug.join("/")
@@ -31,6 +33,15 @@ export async function getStaticPaths() {
 ---
 
 <Layout>
+  <head slot="head">
+    <SEO
+      title={post.data.title}
+      description={post.data.description}
+      image={post.data.image}
+      pubDate={post.data.pubDate}
+      canonicalUrl={`/blog/${post.slug}`}
+    />
+  </head>
   <main>
     <Hero title={post.data.title} background={post.data.image} />
     <div class="content-container-blog">
