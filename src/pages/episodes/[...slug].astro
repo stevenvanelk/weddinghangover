@@ -46,25 +46,9 @@ export async function getStaticPaths() {
     <div class="content-container-blog">
       <div class="rich-content">
         <h1 class="post-title">{episode.data.title}</h1>
-        <p class="date-published">{episode.data.pubDate.toLocaleDateString()}</p>
-        {episode.data.image && (
-          <figure>
-            <img src={episode.data.image} alt={episode.data.title} />
-            {(episode.data.imageCaptionText || episode.data.imageCaptionLinkText) && (
-              <figcaption>
-                {episode.data.imageCaptionText}
-                {episode.data.imageCaptionLinkText && episode.data.imageCaptionLinkUrl && (
-                  <>
-                    {' '}
-                    <a href={episode.data.imageCaptionLinkUrl} target="_blank">
-                      {episode.data.imageCaptionLinkText}
-                    </a>
-                  </>
-                )}
-              </figcaption>
-            )}
-          </figure>
-        )}
+        <p class="date-published">
+          {episode.data.pubDate.toLocaleDateString()}
+        </p>
 
         <article>
           <Content />

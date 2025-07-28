@@ -1,0 +1,92 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import Hero from '../../components/Hero.astro';
+import '../../styles/blogStyles.css'; // or use episodesStyles.css if you want to customize later
+
+export async function getStaticPaths() {
+  const POSTS_PER_PAGE = 10;
+  const allEpisodes = await getCollection('episodes');
+  const totalPages = Math.ceil(allEpisodes.length / POSTS_PER_PAGE);
+
+  return Array.from({ length: totalPages }, (_, i) => ({
+    params: { page: (i + 1).toString() },
+  }));
+}
+
+const POSTS_PER_PAGE = 10;
+const pageParam = Astro.params.page;
+const currentPage = Number(pageParam) || 1;
+
+const allEpisodes = await getCollection('episodes');
+const sortedEpisodes = allEpisodes.sort((a, b) =>
+  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+
+const start = (currentPage - 1) * POSTS_PER_PAGE;
+const end = start + POSTS_PER_PAGE;
+const pageEpisodes = sortedEpisodes.slice(start, end);
+
+const totalPages = Math.ceil(sortedEpisodes.length / POSTS_PER_PAGE);
+
+const paginationItems = Array.from({ length: totalPages }, (_, i) => i + 1)
+  .filter((page) =>
+    page === 1 ||
+    page === totalPages ||
+    Math.abs(page - currentPage) <= 1
+  )
+  .reduce((acc: (number | 'ellipsis')[], page, i, arr) => {
+    if (i > 0 && page - (arr[i - 1] as number) > 1) {
+      acc.push('ellipsis');
+    }
+    acc.push(page);
+    return acc;
+  }, []);
+---
+
+<Layout>
+  <main>
+    <Hero 
+      title="Podcast Episodes" 
+      background="/images/episodes/wph-podcast-hero.webp" 
+    />
+    <div class="content-container">
+      <h1 class="blog-title">Good Good Audio</h1>
+      <div class="blog-list">
+        {pageEpisodes.map((ep: CollectionEntry<'episodes'>) => (
+          <div class="blog-card">
+            <a href={`/episodes/${ep.slug}/`}>
+              <img src={ep.data.image} alt={ep.data.title} class="blog-card-image" />
+            </a>
+            <div class="blog-card-content">
+              <a href={`/episodes/${ep.slug}/`}>
+                <h2 class="blog-card-title">{ep.data.title}</h2>
+              </a>
+              <p class="blog-card-description">{ep.data.description}</p>
+              <a href={`/episodes/${ep.slug}/`}>
+                <p class="blog-card-date">{ep.data.pubDate.toLocaleDateString()}</p>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <nav class="pagination">
+        {paginationItems.map((item) =>
+          item === 'ellipsis' ? (
+            <span class="pagination-ellipsis">…</span>
+          ) : (
+            <a
+              href={`/episodes/${item}/`}
+              class={item === currentPage ? 'active' : ''}
+            >
+              {item}
+            </a>
+          )
+        )}
+      </nav>
+    </div>
+  </main>
+</Layout>
+

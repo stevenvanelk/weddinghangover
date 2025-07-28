@@ -6,7 +6,6 @@ import Hero from "../../components/Hero.astro";
 import "../../styles/blogStyles.css";
 import SEO from "../../components/SEO.astro";
 
-
 const slug = Array.isArray(Astro.params.slug)
   ? Astro.params.slug.join("/")
   : Astro.params.slug;
@@ -21,14 +20,12 @@ const { Content } = await post.render();
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog")) as CollectionEntry<"blog">[];
-  return posts.map((post) => {
-    const slugParts = post.slug.split("/");
-    return {
-      params: {
-        slug: slugParts.length === 1 ? post.slug : slugParts,
-      },
-    };
-  });
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.slug, // MUST be a string!
+    },
+  }));
 }
 ---
 
@@ -39,7 +36,7 @@ export async function getStaticPaths() {
       description={post.data.description}
       image={post.data.image}
       pubDate={post.data.pubDate}
-      canonicalUrl={`/blog/${post.slug}`}
+      canonicalUrl={`/blog/${Array.isArray(post.slug) ? post.slug.join("/") : post.slug}`}
     />
   </head>
   <main>

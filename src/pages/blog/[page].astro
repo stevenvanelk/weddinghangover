@@ -1,0 +1,91 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import Hero from '../../components/Hero.astro';
+import '../../styles/blogStyles.css';
+
+export async function getStaticPaths() {
+  const POSTS_PER_PAGE = 10;
+  const allPosts = await getCollection('blog');
+  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+
+  return Array.from({ length: totalPages }, (_, i) => ({
+    params: { page: (i + 1).toString() },
+  }));
+}
+
+const POSTS_PER_PAGE = 10;
+const pageParam = Astro.params.page;
+const currentPage = Number(pageParam) || 1;
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
+  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+
+const start = (currentPage - 1) * POSTS_PER_PAGE;
+const end = start + POSTS_PER_PAGE;
+const pagePosts = sortedPosts.slice(start, end);
+
+const totalPages = Math.ceil(sortedPosts.length / POSTS_PER_PAGE);
+
+// ✅ Condensed pagination array
+const paginationItems = Array.from({ length: totalPages }, (_, i) => i + 1)
+  .filter((page) =>
+    page === 1 ||
+    page === totalPages ||
+    Math.abs(page - currentPage) <= 1
+  )
+  .reduce((acc: (number | 'ellipsis')[], page, i, arr) => {
+    if (i > 0 && page - (arr[i - 1] as number) > 1) {
+      acc.push('ellipsis');
+    }
+    acc.push(page);
+    return acc;
+  }, []);
+---
+
+<Layout>
+  <main>
+    <Hero 
+      title="Blog Posts" 
+      background="/images/blog/wph-blog-hero.webp" 
+    />
+    <div class="content-container">
+      <h1 class="blog-title">Good Good Words</h1>
+      <div class="blog-list">
+  		{pagePosts.map((post: CollectionEntry<'blog'>) => (
+    		<div class="blog-card">
+      			<a href={`/blog/${post.slug}/`}>
+        			<img src={post.data.image} alt={post.data.title} class="blog-card-image" />
+      			</a>
+      			<div class="blog-card-content">
+        			<a href={`/blog/${post.slug}/`}>
+          				<h2 class="blog-card-title">{post.data.title}</h2>
+        			</a>
+        			<p class="blog-card-description">{post.data.description}</p>
+        			<a href={`/blog/${post.slug}/`}>
+          				<p class="blog-card-date">{post.data.pubDate.toLocaleDateString()}</p>
+        			</a>
+      			</div>
+    		</div>
+  		))}
+	</div>
+      	<nav class="pagination">
+		  	{paginationItems.map((item) =>
+    			item === 'ellipsis' ? (
+      				<span class="pagination-ellipsis">…</span>
+    			) : (
+      				<a
+        				href={`/blog/${item}/`}
+        				class={item === currentPage ? 'active' : ''}
+      				>
+        				{item}
+      				</a>
+    			)
+  			)}
+		</nav>
+    </div>
+  </main>
+</Layout>
