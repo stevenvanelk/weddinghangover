@@ -20,6 +20,17 @@ const pageParam = Astro.params.page;
 const currentPage = Number(pageParam) || 1;
 
 const allPosts = await getCollection('blog');
+for (const post of allPosts) {
+  if (typeof post.id !== "string") {
+    console.error("❌ Invalid post.id:", post.id, "TYPE:", typeof post.id);
+    throw new Error("Invalid post.id: not a string");
+  }
+  if (typeof post.slug !== "string") {
+    console.error("❌ Invalid post.slug:", post.slug, "TYPE:", typeof post.slug);
+    throw new Error("Invalid post.slug: not a string");
+  }
+}
+
 const sortedPosts = allPosts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
   new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );

@@ -20,7 +20,17 @@ const pageParam = Astro.params.page;
 const currentPage = Number(pageParam) || 1;
 
 const allEpisodes = await getCollection('episodes');
-const sortedEpisodes = allEpisodes.sort((a, b) =>
+for (const ep of allEpisodes) {
+  if (typeof ep.id !== "string") {
+    console.error("❌ Invalid ep.id:", ep.id, "TYPE:", typeof ep.id);
+    throw new Error("Invalid ep.id: not a string");
+  }
+  if (typeof ep.slug !== "string") {
+    console.error("❌ Invalid ep.slug:", ep.slug, "TYPE:", typeof ep.slug);
+    throw new Error("Invalid ep.slug: not a string");
+  }
+}
+const sortedEpisodes = allEpisodes.sort((a: CollectionEntry<'episodes'>, b: CollectionEntry<'episodes'>) =>
   new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
 
