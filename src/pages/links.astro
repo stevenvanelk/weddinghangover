@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from 'astro:content';
+import "../styles/blogStyles.css";
+
+const allPosts = await getCollection("blog");
+const recentPosts = (allPosts as CollectionEntry<'blog'>[])
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+  .slice(0, 5);
+
+---
+<Layout>
+    <head slot="head">
+        <title>Links | Wedding Photo Hangover</title>
+        <link rel="canonical" href="https://weddinghangover.com/links" />
+        <meta name="description" content="All the links you need from Wedding Photo Hangover: episodes, Patreon, YouTube, our Facebook group, and more." />
+
+        <meta property="og:site_name" content="Wedding Photo Hangover - A Wedding Photography Podcast" />
+        <meta property="og:title" content="Links | Wedding Photo Hangover" />
+        <meta property="og:description" content="All the links you need from Wedding Photo Hangover: episodes, Patreon, YouTube, our Facebook group, and more." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://weddinghangover.com/links" />
+        <meta property="og:image" content="/images/links/links.webp" />
+        <meta property="og:image:width" content="1500" />
+        <meta property="og:image:height" content="843" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Links | Wedding Photo Hangover" />
+        <meta name="twitter:description" content="All the links you need from Wedding Photo Hangover: episodes, Patreon, YouTube, our Facebook group, and more." />
+        <meta name="twitter:image" content="/images/links/links.webp" />
+        <meta name="twitter:url" content="https://weddinghangover.com/links" />
+
+        <meta itemprop="name" content="Links | Wedding Photo Hangover" />
+        <meta itemprop="description" content="All the links you need from Wedding Photo Hangover: episodes, Patreon, YouTube, our Facebook group, and more." />
+        <meta itemprop="url" content="https://weddinghangover.com/links" />
+        <meta itemprop="image" content="/images/links/links.webp" />
+        </head>
+
+<main>
+    <Hero 
+        title="Hot Links - Get 'Em Fresh" 
+        background="/images/links/links.webp" 
+        />
+  <div class="content-container-2">
+  <section class="center-text">
+    <h2 style="margin-bottom: 2rem;">Most Recent Episode</h2>
+      <iframe
+        src="https://anchor.fm/weddingphotohangover/embed"
+        width="400"
+        height="102"
+        frameborder="0"
+        scrolling="no"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+        title="Anchor FM Inc. embed"
+      ></iframe>
+  </section>
+
+  <section class="center-text">
+    <h2 style="margin-bottom: 2rem;">Links</h2>
+    <div class="button-stack">
+      <a href="/episodes" class="button-link">Episodes</a>
+      <a href="https://www.patreon.com/WPH" class="button-link" target="_blank">Patreon</a>
+      <a href="https://www.youtube.com/channel/UCdMqr4HWdKLAEevkr3XLYVA" class="button-link" target="_blank">Youtube</a>
+      <a href="https://www.facebook.com/groups/weddinghangover/" class="button-link" target="_blank">Facebook Group</a>
+      <a href="https://www.zazzle.com/store/weddinghangover" class="button-link" target="_blank">Zazzle Store</a>
+    </div>
+  </section>
+
+  <section class="center-text">
+    <h2 style="margin-bottom: 2rem;">Recent Blog Posts</h2>
+    <div class="blog-list">
+        {recentPosts.map((post) => (
+        <div class="blog-card">
+            <a href={`/blog/${post.slug}/`}>
+            <img src={post.data.image} alt={post.data.title} class="blog-card-image" />
+            </a>
+            <div class="blog-card-content">
+            <a href={`/blog/${post.slug}/`}>
+                <h2 class="blog-card-title">{post.data.title}</h2>
+            </a>
+            <p class="blog-card-description">{post.data.description}</p>
+            <a href={`/blog/${post.slug}/`}>
+                <p class="blog-card-date">{new Date(post.data.pubDate).toLocaleDateString()}</p>
+            </a>
+            </div>
+        </div>
+        ))}
+    </div>
+    </section>
+  </div>
+</main>
+</Layout>

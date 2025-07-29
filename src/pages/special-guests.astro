@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from 'astro:content';
+import "../styles/blogStyles.css";
+
+const allPosts = await getCollection("episodes");
+const recentPosts = (allPosts as CollectionEntry<'episodes'>[])
+  .filter((post) => post.data.tags?.includes("Special Guest"))
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+  .slice(0, 10);
+---
+<Layout>
+    <head slot="head">
+        <title>Special Guests | Wedding Photo Hangover</title>
+        <link rel="canonical" href="https://weddinghangover.com/special-guests" />
+        <meta name="description" content="Catch all the Wedding Photo Hangover podcast episodes featuring amazing special guests from the world of wedding photography and beyond." />
+
+        <meta property="og:site_name" content="Wedding Photo Hangover - A Wedding Photography Podcast" />
+        <meta property="og:title" content="Special Guests | Wedding Photo Hangover" />
+        <meta property="og:description" content="Catch all the Wedding Photo Hangover podcast episodes featuring amazing special guests from the world of wedding photography and beyond." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://weddinghangover.com/special-guests" />
+        <meta property="og:image" content="/images/guests/guests.webp" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Special Guests | Wedding Photo Hangover" />
+        <meta name="twitter:description" content="Catch all the Wedding Photo Hangover podcast episodes featuring amazing special guests from the world of wedding photography and beyond." />
+        <meta name="twitter:image" content="/images/guests/guests.webp" />
+        <meta name="twitter:url" content="https://weddinghangover.com/special-guests" />
+
+        <meta itemprop="name" content="Special Guests | Wedding Photo Hangover" />
+        <meta itemprop="description" content="Catch all the Wedding Photo Hangover podcast episodes featuring amazing special guests from the world of wedding photography and beyond." />
+        <meta itemprop="url" content="https://weddinghangover.com/special-guests" />
+        <meta itemprop="image" content="/images/guests/guests.webp" />
+    </head>
+<main>
+    <Hero 
+        title="Special Guests" 
+        background="/images/guests/guests.webp" 
+        />
+  <div class="content-container-2">
+    <section class="center-text">
+    <h2 style="margin-bottom: 2rem;">10 Most Recent Guest Episodes</h2>
+    <div class="blog-list">
+        {recentPosts.map((post) => (
+        <div class="blog-card">
+            <a href={`/blog/${post.slug}/`}>
+            <img src={post.data.image} alt={post.data.title} class="blog-card-image" />
+            </a>
+            <div class="blog-card-content">
+            <a href={`/blog/${post.slug}/`}>
+                <h2 class="blog-card-title">{post.data.title}</h2>
+            </a>
+            <p class="blog-card-description">{post.data.description}</p>
+            <a href={`/blog/${post.slug}/`}>
+                <p class="blog-card-date">{new Date(post.data.pubDate).toLocaleDateString()}</p>
+            </a>
+            </div>
+        </div>
+        ))}
+    </div>
+    </section>
+  </div>
+  </main>
+  </Layout>
