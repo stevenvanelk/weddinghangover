@@ -10,6 +10,11 @@ const recentPosts = (allPosts as CollectionEntry<'blog'>[])
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
   .slice(0, 5);
 
+const episodePosts = await getCollection("episodes");
+const recentEpisodePost = (episodePosts as CollectionEntry<'episodes'>[])
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())[0];
+
+
 ---
 <Layout>
     <head slot="head">
@@ -56,6 +61,13 @@ const recentPosts = (allPosts as CollectionEntry<'blog'>[])
         allowfullscreen
         title="Anchor FM Inc. embed"
       ></iframe>
+      {recentEpisodePost && (
+        <p style="margin-top: 1rem;">
+            <a href={`/episodes/${recentEpisodePost.slug}`}>
+            Tap here to see the episode show notes
+            </a>
+        </p>
+        )}
   </section>
 
   <section class="center-text">
