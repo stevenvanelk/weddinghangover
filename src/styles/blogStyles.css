@@ -69,7 +69,7 @@ figcaption a {
 .rich-content ul,
 .rich-content ol {
     padding-left: 2em !important;
-    margin-bottom: 0.15rem !important;
+    margin-bottom: 0.5rem !important;
 }
 
 /* Blockquotes */
@@ -140,10 +140,6 @@ figcaption a {
     margin-bottom: 0.05rem !important;
     line-height: 2 !important;
     text-align: center !important;
-}
-
-.rich-content p:has(> a:first-child):has(> a:nth-child(2)) {
-    text-align: center;
 }
 
 .date-published {
@@ -290,6 +286,109 @@ figcaption a {
     font-weight: bold; 
 }
 
+/* Blog Post Bottom Navigation */
+.post-navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #ddd;
+}
+
+.nav-col {
+    overflow: hidden;
+}
+
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-weight: bold;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.nav-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-word;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.nav-link.newer {
+    text-align: left;
+}
+
+.nav-link.older {
+    text-align: right;
+}
+
+/* Blog Post Cards */
+.blog-post-cards figure,
+.blog-post-cards figure * {
+    all: unset;
+    display: revert;
+    box-sizing: border-box;
+}
+
+.blog-post-cards figure {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: stretch;
+    height: 160px;
+    margin: 1.5rem 0 !important;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    /* ✅ Ensures padding/border don't break height */
+}
+
+.blog-post-cards figure img {
+    width: 150px;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+    vertical-align: middle;
+    /* ✅ Eliminates phantom whitespace */
+    border-radius: 0;
+    /* Resets global border-radius */
+}
+
+.blog-post-cards figure figcaption {
+    height: 100%;
+    flex: 1;
+    padding: 1rem;
+    margin: 0;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    /* ✅ Override the global center text */
+    box-sizing: border-box;
+}
+
 @media (max-width: 480px) {
     .embedly-embed {
         height: 100px;
@@ -306,5 +405,19 @@ figcaption a {
 
     .blog-card-content {
         padding: 1rem;   
+    }
+
+    .blog-post-cards figure {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .blog-post-cards figure img {
+        height: auto;
+    }
+
+    .blog-post-cards figure figcaption {
+        text-align: center;
+        justify-content: center;
     }
 }

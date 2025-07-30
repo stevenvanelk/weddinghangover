@@ -27,6 +27,17 @@ export async function getStaticPaths() {
     },
   }));
 }
+const allPosts = (await getCollection("blog")) as CollectionEntry<"blog">[];
+
+// Sort posts by date descending (newest first)
+allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+
+// Find the index of the current post
+const currentIndex = allPosts.findIndex((p) => p.slug === post.slug);
+
+const newerPost = allPosts[currentIndex - 1]; // Newer post (earlier in the list)
+const olderPost = allPosts[currentIndex + 1]; // Older post (later in the list)
+
 ---
 
 <Layout>
@@ -48,6 +59,24 @@ export async function getStaticPaths() {
         <article>
           <Content />
         </article>
+        <nav class="post-navigation">
+          <div class="nav-col">
+            {newerPost && (
+              <a href={`/blog/${newerPost.slug}`} class="nav-link newer">
+                <span class="nav-label">← Newer Post</span>
+                <span class="nav-title">{newerPost.data.title}</span>
+              </a>
+            )}
+          </div>
+          <div class="nav-col">
+            {olderPost && (
+              <a href={`/blog/${olderPost.slug}`} class="nav-link older">
+                <span class="nav-label">Older Post →</span>
+                <span class="nav-title">{olderPost.data.title}</span>
+              </a>
+            )}
+          </div>
+        </nav>
       </div>
     </div>
   </main>
