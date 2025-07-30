@@ -252,6 +252,7 @@ figcaption a {
     margin-top: 2rem; 
 }
 
+/* Pagination Styles */
 .pagination {
     display: flex;
     justify-content: center;
