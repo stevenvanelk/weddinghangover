@@ -130,7 +130,7 @@ nav ul li a:hover {
     text-align: center;
     position: relative;
     z-index: 2;
-    max-width: 90vw;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 1rem;
 
