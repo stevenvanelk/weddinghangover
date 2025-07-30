@@ -318,13 +318,11 @@ figcaption a {
 }
 
 .nav-title {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+    display: block;
+    max-width: 100%;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: normal;
-    word-break: break-word;
     font-size: 1rem;
     font-weight: bold;
 }
