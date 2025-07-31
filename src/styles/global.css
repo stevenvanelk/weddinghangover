@@ -281,6 +281,27 @@ iframe {
     height: auto;
 }
 
+.spotify-embed {
+    width: 100%;
+    max-width: 1000px;
+    height: 80px;
+    border: none;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto 2rem auto;
+}
+
+.spotify-embed-blog {
+    width: 100%;
+    max-width: 800px;
+    height: 80px;
+    max-height: 80px !important;
+    border: none;
+    border-radius: 12px;
+    display: block;
+    margin: 1rem auto 3rem auto;
+}
+
 .content-container {
     max-width: 1000px;
     /* You can adjust this width */
