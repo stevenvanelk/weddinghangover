@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<Layout>
+  <head slot="head">
+    <title>Search | Wedding Photo Hangover</title>
+    <link rel="canonical" href="https://weddinghangover.com/search" />
+    <meta name="description" content="Search blog posts, podcast episodes, and other pages across the Wedding Photo Hangover website." />
+    <meta property="og:site_name" content="Wedding Photo Hangover - A Wedding Photography Podcast" />
+    <meta property="og:title" content="Search | Wedding Photo Hangover" />
+    <meta property="og:description" content="Search blog posts, podcast episodes, and other pages across the Wedding Photo Hangover website." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://weddinghangover.com/search" />
+    <meta property="og:image" content="/images/index/wedding-hangover-hero-image.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Search | Wedding Photo Hangover" />
+    <meta name="twitter:description" content="Search blog posts, podcast episodes, and other pages across the Wedding Photo Hangover website." />
+    <meta name="twitter:image" content="/images/index/wedding-hangover-hero-image.webp" />
+    <meta name="twitter:url" content="https://weddinghangover.com/search" />
+    <meta itemprop="name" content="Search | Wedding Photo Hangover" />
+    <meta itemprop="description" content="Search blog posts, podcast episodes, and other pages across the Wedding Photo Hangover website." />
+    <meta itemprop="url" content="https://weddinghangover.com/search" />
+    <meta itemprop="image" content="/images/index/wedding-hangover-hero-image.webp" />
+  </head>
+
+  <main>
+    <Hero 
+      title="Come Find Whatever You're Looking For" 
+      background="/images/index/wedding-hangover-hero-image.webp" 
+    />
+
+    <div class="search-container">
+      <p>
+        Use the search below to find blog posts, resources, and pages across the Wedding Photo Hangover website.
+        <br /><br />
+        <strong>Please note:</strong> Some ads may appear in the results and may link to other websites.
+        If you use an ad blocker, you probably won't see them though.
+      </p>
+
+      <div class="gcse-search"></div>
+    </div>
+  </main>
+
+  <script is:raw>
+    const gcsScript = document.createElement('script');
+    gcsScript.src = "https://cse.google.com/cse.js?cx=235d7191a4a4748ec";
+    gcsScript.async = true;
+    document.body.appendChild(gcsScript);
+  </script>
+</Layout>

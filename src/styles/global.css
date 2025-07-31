@@ -695,6 +695,13 @@ h2 {
     border-radius: 8px;
 }
 
+/* Search Styling */
+.search-container {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .hero-title {
