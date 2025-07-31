@@ -1,6 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
+import HeroImg from '../components/HeroImg.astro';
+import { Image } from 'astro:assets';
+import communityImg from '../images/index/wph-community.webp';
+import patreonImg from '../images/index/wph-patreon.webp';
+import heroImg from '../images/index/wph-hero.webp';
 ---
 
 <Layout>
@@ -29,11 +33,10 @@ import Hero from '../components/Hero.astro';
 
 
   <main>
-    <Hero 
+    <HeroImg 
       title="An Irreverent Look at Photography" 
-      background="/images/index/wedding-hangover-hero-image.webp" 
+      background={heroImg}
     />
-
     <div class="content-container">
 
       <section>
@@ -47,6 +50,7 @@ import Hero from '../components/Hero.astro';
 
       <section>
         <iframe
+          loading="lazy"
           width="500"
           height="110"
           scrolling="no"
@@ -60,7 +64,14 @@ import Hero from '../components/Hero.astro';
       </section>
 
       <section class="card card-left">
-        <img src="/images/index/wph-community.webp" alt="Wedding Photo Hangover Community">
+        <Image
+          src={communityImg}
+          alt="Wedding Photo Hangover Community"
+          width={600}
+          quality={80}
+          format="webp"
+          class="card-image"
+        />
         <div class="card-content">
           <h3>Community</h3>
           <p>
@@ -71,7 +82,14 @@ import Hero from '../components/Hero.astro';
       </section>
 
       <section class="card card-right">
-        <img src="/images/index/wph-patreon.webp" alt="Support Wedding Photo Hangover on Patreon">
+        <Image
+          src={patreonImg}
+          alt="Support Wedding Photo Hangover on Patreon"
+          width={600}
+          quality={80}
+          format="webp"
+          class="card-image"
+        />
         <div class="card-content">
           <h3>Support</h3>
           <p>
