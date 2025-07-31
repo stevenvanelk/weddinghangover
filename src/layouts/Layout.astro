@@ -4,7 +4,6 @@ import garamondUrl from '../fonts/EBGaramond-VariableFont_wght.woff2';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Cookiebanner from '../components/Cookiebanner.astro';
-import '../styles/global.css';
 ---
 <!doctype html>
 <html lang="en">
@@ -28,7 +27,7 @@ import '../styles/global.css';
 			font-style: normal;
 			font-display: swap;
 		}`}></style>
-
+		<link rel="stylesheet" href="/css/global.css" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="alternate" type="application/rss+xml" title="Wedding Photo Hangover Blog" href="/blog/rss.xml" />
