@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
+import HeroImg from '../components/HeroImg.astro';
+import heroImg from '../images/amazeballs/wph-amazeballs.webp';
 ---
 <Layout>
     <head slot="head">
@@ -29,9 +30,9 @@ import Hero from '../components/Hero.astro';
     <meta itemprop="image" content="/images/amazeballs/WPH-Amazeballs.webp" />
   </head>
     <main>
-    <Hero 
+    <HeroImg 
         title="" 
-        background="/images/amazeballs/WPH-Amazeballs.webp" 
+        background={heroImg} 
         />
     <div class="content-container-2">
     <section class="content">
@@ -49,18 +50,19 @@ import Hero from '../components/Hero.astro';
         </p>
         <br />
         <iframe
-        width="100%"
-        height="400"
-        scrolling="no"
-        frameborder="no"
-        src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F317445042&show_artwork=true"
+            class="spotify-embed"
+            width="100%"
+            height="80"
+            scrolling="no"
+            frameborder="no"
+            src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F317445042&show_artwork=true"
         ></iframe>
         <br />
         <p>
         <strong>Update (03/21/2019):</strong> Here’s the episode (embedded below). <a href="https://weddinghangover.com/episodes/2019/3/31/ep-089-gamify-work-with-marianne-chua-and-kari-bellamy-of-amazeballs-wedding-photography-podcast" target="_blank">Tap here to get the episode’s show notes</a>.
         </p>
         <br />
-        <iframe src="https://creators.spotify.com/pod/profile/weddingphotohangover/embed/episodes/Ep--089---Gamify-Work-with-Marianne-Chua-and-Kari-Bellamy-of-Amazeballs-Wedding-Photography-Podcast-e3jtmv/a-abao43" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe class="spotify-embed" style="border-radius:12px" src="https://open.spotify.com/embed/episode/5mq4K1spShkwAnQSux8qJc?utm_source=generator" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </section>
     </div>
     </main>

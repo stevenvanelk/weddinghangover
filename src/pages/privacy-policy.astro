@@ -1,6 +1,7 @@
 ---
-import Layout from '../layouts/Layout-no-tracking.astro';
-import Hero from '../components/Hero.astro';
+import Layout from '../layouts/Layout.astro';
+import HeroImg from '../components/HeroImg.astro';
+import heroImg from '../images/index/wph-hero.webp';
 import '../styles/privacy.css';
 ---
 
@@ -11,9 +12,9 @@ import '../styles/privacy.css';
   </head>
 
   <main>
-    <Hero 
+    <HeroImg 
       title="Wedding Photo Hangover Privacy Policy" 
-      background="/images/index/wedding-hangover-hero-image.webp" 
+      background= {heroImg} 
     />
     <div class="content-container">
         <div class="privacy-wrapper">

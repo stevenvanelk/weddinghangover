@@ -1,9 +1,21 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import Hero from '../../../components/Hero.astro';
+import HeroImg from '../../../components/HeroImg.astro';
 import { getCollection } from 'astro:content';
 import { slugify } from '../../../utils/slugify';
 import '../../../styles/blogStyles.css';
+import tagSpecialGuest from '../../../images/tags/special-guest.webp';
+import tagSatire from '../../../images/tags/satire.webp';
+import tagPhotographyTips from '../../../images/tags/photography-tips.webp';
+import tagHolidaySpecial from '../../../images/tags/holiday-special.webp';
+import heroImg from '../../../images/episodes/wph-podcast-hero.webp';
+
+const tagHeroMap = {
+  'special-guest': tagSpecialGuest,
+  'satire': tagSatire,
+  'photography-tips': tagPhotographyTips,
+  'holiday-special': tagHolidaySpecial
+};
 
 export async function getStaticPaths() {
   const POSTS_PER_PAGE = 10;
@@ -68,12 +80,12 @@ const start = (currentPage - 1) * POSTS_PER_PAGE;
 const end = start + POSTS_PER_PAGE;
 const paginatedPosts = taggedPosts.slice(start, end);
 
-const heroImage = `/images/tags/${tagSlug}.webp`;
+const heroImage = tagHeroMap[tagSlug as keyof typeof tagHeroMap] ?? heroImg;
 ---
 
 <Layout title={`Tag: ${originalTag}`}>
   <main>
-    <Hero 
+    <HeroImg 
       title={`Posts tagged with "${originalTag}"`} 
       background={heroImage}
     />

@@ -1,6 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
+import HeroImg from '../components/HeroImg.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../images/why/why.webp';
+import steveImg from '../images/why/steve-jenn.webp'
+import dustinImg from '../images/why/dustin-corynn.webp'
 ---
 <Layout>
   <head slot="head">
@@ -28,9 +32,9 @@ import Hero from '../components/Hero.astro';
   </head>
 
   <main>
-    <Hero 
+    <HeroImg 
       title="Not Your Typical Wedding Photography Podcast"
-      background="/images/why/why.webp" 
+      background={heroImg} 
     />
 
     <div class="content-container-2">
@@ -70,7 +74,14 @@ import Hero from '../components/Hero.astro';
 
       <section>
         <h2 style="margin-bottom: 1rem;">About Steve</h2>
-        <img src="/images/why/steve-jenn.webp" alt="This is Steve!" class="profile-image" />
+        <Image
+          src={steveImg}
+          alt="This is Steve!"
+          width={600}
+          quality={80}
+          format="webp"
+          class="profile-image"
+        />
         <p>
           Steven Van Elk was 5th Grade Paddle Ball Champion at his school growing up. And in case you were wondering if he defended his title in 6th Grade at East Side Elementary — you better believe it baby!
         </p>
@@ -89,7 +100,15 @@ import Hero from '../components/Hero.astro';
 
       <section>
         <h2 style="margin-bottom: 1rem;">About Dustin</h2>
-        <img src="/images/why/dustin-corynn.webp" alt="This is Dustin!" class="profile-image" />
+        <Image
+          src={dustinImg}
+          alt="This is Dustin!"
+          width={600}
+          quality={80}
+          format="webp"
+          class="profile-image"
+        />
+
         <p>
           Dustin McKibben couldn’t be bothered to write his own bio, so I (Steve) did it for him. Dustin is a photographer in Fort Wayne, Indiana. No one brings the awesome quite like Dustin.
         </p>

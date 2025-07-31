@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
+import HeroImg from '../components/HeroImg.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../images/support/wph-support.webp';
+import sonyPonyImg from '../images/support/sonyPonyUlices.webp'
 ---
 
 <Layout>
@@ -28,9 +31,9 @@ import Hero from '../components/Hero.astro';
   </head>
 
   <main>
-    <Hero 
+    <HeroImg 
       title="You Already Love Us, So Why Not Support Us?" 
-      background="/images/support/wph-support.webp" 
+      background={heroImg}
     />
     <div class="content-container">
         <section>
@@ -59,7 +62,13 @@ import Hero from '../components/Hero.astro';
         </section>
 
         <section>
-            <img src="/images/support/sonyPonyUlices.webp" alt="You could look as cool as Ulices Del Toro!" style="max-width:100%; height:auto;" />
+            <Image
+                src={sonyPonyImg}
+                alt="You could look as cool as Ulices Del Toro!"
+                style="max-width:100%; height:auto;"
+                format="webp"
+                quality={80}
+            />
             <p style="text-align:center;">You could look as cool as <a href="http://www.deltorophoto.com/">Ulices Del Toro</a>!</p>
         </section>
 

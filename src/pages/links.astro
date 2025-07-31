@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
+import HeroImg from '../components/HeroImg.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../images/links/links.webp';
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from 'astro:content';
 import "../styles/blogStyles.css";
@@ -44,23 +46,24 @@ const recentEpisodePost = (episodePosts as CollectionEntry<'episodes'>[])
         </head>
 
 <main>
-    <Hero 
+    <HeroImg 
         title="Hot Links - Get 'Em Fresh" 
-        background="/images/links/links.webp" 
+        background={heroImg} 
         />
   <div class="content-container-2">
   <section class="center-text">
     <h2 style="margin-bottom: 2rem;">Most Recent Episode</h2>
       <iframe
-        src="https://anchor.fm/weddingphotohangover/embed"
-        width="400"
-        height="102"
-        frameborder="0"
-        scrolling="no"
-        allow="autoplay; fullscreen"
-        allowfullscreen
-        title="Anchor FM Inc. embed"
-      ></iframe>
+          class="spotify-embed"
+          style="border-radius:12px"
+          src="https://open.spotify.com/embed/show/09hCjT9XXAKzGin8bkLG3a?utm_source=generator&theme=0"
+          width="100%"
+          height="80"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
       {recentEpisodePost && (
         <p style="margin-top: 1rem;">
             <a href={`/episodes/${recentEpisodePost.slug}`}>
