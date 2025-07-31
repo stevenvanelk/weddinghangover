@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import { getCollection } from 'astro:content';
+import { slugify } from '../utils/slugify';
+import '../styles/blogStyles.css';
+
+const blogPosts = await getCollection('blog');
+const episodePosts = await getCollection('episodes');
+const allPosts = [...blogPosts, ...episodePosts];
+
+const tagCounts = new Map<string, number>();
+const tagNames = new Map<string, string>();
+
+for (const post of allPosts) {
+  if (Array.isArray(post.data.tags)) {
+    for (const tag of post.data.tags) {
+      const slug = slugify(tag);
+      tagCounts.set(slug, (tagCounts.get(slug) ?? 0) + 1);
+      tagNames.set(slug, tag);
+    }
+  }
+}
+
+const sortedTags = Array.from(tagCounts.entries())
+  .sort((a, b) => b[1] - a[1])
+  .map(([slug, count]) => ({
+    slug,
+    name: tagNames.get(slug) ?? slug,
+    count,
+    image: `/images/tags/${slug}.webp`, // fallback handled in markup
+  }));
+---
+
+<Layout title="Browse Tags">
+  <main>
+    <Hero 
+      title="Explore Tags" 
+      background="/images/episodes/wph-podcast-hero.webp" 
+    />
+
+    <div class="content-container">
+      <h1 class="blog-title">All Tags</h1>
+
+      <div class="blog-list">
+        {sortedTags.map(tag => (
+          <div class="blog-card">
+            <a href={`/tags/${tag.slug}/`}>
+              <img
+                src={tag.image}
+                alt={tag.name}
+                class="blog-card-image"
+                onerror="this.src='/images/tags/tag-default.webp'; this.onerror=null;"
+              />
+            </a>
+            <div class="blog-card-content">
+              <a href={`/tags/${tag.slug}/`}>
+                <h2 class="blog-card-title">{tag.name}</h2>
+              </a>
+              <p class="blog-card-description">{tag.count} post{tag.count !== 1 ? 's' : ''}</p>
+              <a href={`/tags/${tag.slug}/`}>
+                <p class="blog-card-date">View posts →</p>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </main>
+</Layout>

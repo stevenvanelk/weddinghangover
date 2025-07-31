@@ -5,6 +5,7 @@ import type { CollectionEntry } from "astro:content";
 import Hero from "../../components/Hero.astro";
 import "../../styles/blogStyles.css";
 import SEO from "../../components/SEO.astro";
+import { slugify } from "../../utils/slugify";
 
 const slug = Array.isArray(Astro.params.slug)
   ? Astro.params.slug.join("/")
@@ -64,6 +65,16 @@ const olderEpisode = allEpisodes[currentIndex + 1];
         <article>
           <Content />
         </article>
+        {episode.data.tags && episode.data.tags.length > 0 && (
+          <div class="post-tags">
+            <h3>Tags:</h3>
+            <div class="tag-list">
+              {episode.data.tags.map((tag: string) => (
+                <a href={`/tags/${slugify(tag)}/`} rel="tag">#{tag}</a>
+              ))}
+            </div>
+          </div>
+        )}
         <nav class="post-navigation">
           <div class="nav-col">
             {newerEpisode && (

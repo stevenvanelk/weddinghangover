@@ -5,6 +5,7 @@ import type { CollectionEntry } from "astro:content";
 import Hero from "../../components/Hero.astro";
 import "../../styles/blogStyles.css";
 import SEO from "../../components/SEO.astro";
+import { slugify } from "../../utils/slugify";
 
 const slug = Array.isArray(Astro.params.slug)
   ? Astro.params.slug.join("/")
@@ -47,7 +48,7 @@ const olderPost = allPosts[currentIndex + 1]; // Older post (later in the list)
       description={post.data.description}
       image={post.data.image}
       pubDate={post.data.pubDate}
-      canonicalUrl={`/blog/${Array.isArray(post.slug) ? post.slug.join("/") : post.slug}`}
+      canonicalUrl={`/blog/${post.slug}`}
     />
   </head>
   <main>
@@ -59,6 +60,16 @@ const olderPost = allPosts[currentIndex + 1]; // Older post (later in the list)
         <article>
           <Content />
         </article>
+        {post.data.tags && post.data.tags.length > 0 && (
+          <div class="post-tags">
+            <h3>Tags:</h3>
+            <div class="tag-list">
+              {post.data.tags.map((tag: string) => (
+                <a href={`/tags/${slugify(tag)}/`} rel="tag">#{tag}</a>
+              ))}
+            </div>
+          </div>
+        )}
         <nav class="post-navigation">
           <div class="nav-col">
             {newerPost && (
