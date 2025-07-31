@@ -702,6 +702,11 @@ h2 {
     padding: 0 1rem;
 }
 
+.search-text {
+    text-align: center !important;
+    margin-bottom: 2rem !important;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .hero-title {
