@@ -83,7 +83,15 @@ const paginatedPosts = taggedPosts.slice(start, end);
 const heroImage = tagHeroMap[tagSlug as keyof typeof tagHeroMap] ?? heroImg;
 ---
 
-<Layout title={`Tag: ${originalTag}`}>
+<Layout>
+  <Fragment slot="head">
+    <title>#{originalTag} – Wedding Photo Hangover – Page {currentPage}</title>
+    <meta name="description" content={`Browse page ${currentPage} of posts tagged with "${originalTag}" from the Wedding Photo Hangover podcast.`} />
+    <link rel="canonical" href={`https://weddinghangover.com/tags/${tagSlug}/${currentPage === 1 ? '' : `${currentPage}/`}`} />
+    <meta property="og:title" content={`Posts tagged "${originalTag}" – Wedding Photo Hangover`} />
+    <meta property="og:description" content={`Photography podcast episodes and blog posts tagged with "${originalTag}".`} />
+    <meta property="og:image" content="/images/global/WPH_Wide_CleanNB.webp" />
+  </Fragment>
   <main>
     <HeroImg 
       title={`Posts tagged with "${originalTag}"`} 

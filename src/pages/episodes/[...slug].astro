@@ -44,7 +44,7 @@ const olderEpisode = allEpisodes[currentIndex + 1];
 ---
 
 <Layout>
-  <head slot="head">
+  <Fragment slot="head">
     <SEO
       title={episode.data.title}
       description={episode.data.description}
@@ -52,7 +52,7 @@ const olderEpisode = allEpisodes[currentIndex + 1];
       pubDate={episode.data.pubDate}
       canonicalUrl={`/episodes/${episode.slug}`}
     />
-  </head>
+  </Fragment>
   <main>
     <Hero title={episode.data.title} background={episode.data.image} />
     <div class="content-container-blog">

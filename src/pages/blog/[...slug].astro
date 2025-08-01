@@ -42,7 +42,7 @@ const olderPost = allPosts[currentIndex + 1]; // Older post (later in the list)
 ---
 
 <Layout>
-  <head slot="head">
+  <Fragment slot="head">
     <SEO
       title={post.data.title}
       description={post.data.description}
@@ -50,7 +50,7 @@ const olderPost = allPosts[currentIndex + 1]; // Older post (later in the list)
       pubDate={post.data.pubDate}
       canonicalUrl={`/blog/${post.slug}`}
     />
-  </head>
+  </Fragment>
   <main>
     <Hero title={post.data.title} background={post.data.image} />
     <div class="content-container-blog">

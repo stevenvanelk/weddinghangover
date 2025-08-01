@@ -58,6 +58,15 @@ const paginationItems = Array.from({ length: totalPages }, (_, i) => i + 1)
 ---
 
 <Layout>
+  <Fragment slot="head">
+    <title>Wedding Photo Hangover Podcast – Page {currentPage}</title>
+    <meta name="description" content={`Browse page ${currentPage} of the Wedding Photo Hangover podcast archive. Photography news, satire, and irreverent humor.`} />
+    <link rel="canonical" href={`https://weddinghangover.com/episodes/${currentPage === 1 ? '' : `${currentPage}/`}`} />
+    <meta property="og:title" content={`Wedding Photo Hangover Podcast – Page ${currentPage}`} />
+    <meta property="og:description" content="Explore recent episodes from the Wedding Photo Hangover podcast. All the photography fun, none of the seriousness." />
+    <meta property="og:image" content="/images/global/WPH_Wide_CleanNB.webp" />
+  </Fragment>
+
   <main>
     <HeroImg 
       title="Podcast Episodes" 

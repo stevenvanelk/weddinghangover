@@ -14,7 +14,7 @@ const recentPosts = (allPosts as CollectionEntry<'episodes'>[])
   .slice(0, 10);
 ---
 <Layout>
-    <head slot="head">
+    <Fragment slot="head">
         <title>Holiday Specials | Wedding Photo Hangover</title>
         <link rel="canonical" href="https://weddinghangover.com/holiday-specials" />
         <meta name="description" content="All the spooky, festive, and chaotic holiday episodes of Wedding Photo Hangover. Perfect for Halloween, Christmas, and everything in between." />
@@ -36,7 +36,7 @@ const recentPosts = (allPosts as CollectionEntry<'episodes'>[])
         <meta itemprop="description" content="All the spooky, festive, and chaotic holiday episodes of Wedding Photo Hangover. Perfect for Halloween, Christmas, and everything in between." />
         <meta itemprop="url" content="https://weddinghangover.com/holiday-specials" />
         <meta itemprop="image" content="/images/holidays/halloween.webp" />
-    </head>
+    </Fragment>
 <main>
     <HeroImg 
         title="Special Guests" 

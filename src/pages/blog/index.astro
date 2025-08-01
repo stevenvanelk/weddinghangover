@@ -60,6 +60,15 @@ const paginationItems = Array.from({ length: totalPages }, (_, i) => i + 1)
 ---
 
 <Layout>
+  <Fragment slot="head">
+    <title>Wedding Photo Hangover Blog - Page 1</title>
+    <meta name="description" content="Browse blog posts from the Wedding Photo Hangover podcast. Photography tips, satire, and more." />
+    <link rel="canonical" href={`https://weddinghangover.com/blog/`} />
+    <meta property="og:title" content={`Wedding Photo Hangover Blog – Page 1`} />
+    <meta property="og:description" content="Explore more posts from the Wedding Photo Hangover podcast blog." />
+    <meta property="og:image" content="/images/global/WPH_Wide_CleanNB.webp" />
+</Fragment>
+
   <main>
     <HeroImg 
       title="Blog Posts" 
