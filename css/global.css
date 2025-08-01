@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    height: 100%;
+}
+
 body {
     font-family: 'Garamond', Georgia, 'Times New Roman', Times, serif;
     background-color: white;
@@ -13,6 +18,13 @@ body {
     /* Ensures there's no margin around the body */
     padding: 0;
     /* Ensures there's no padding around the body */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
 }
 
 /* Header Styling */
@@ -281,27 +293,6 @@ iframe {
     height: auto;
 }
 
-.spotify-embed {
-    width: 100%;
-    max-width: 1000px;
-    height: 80px;
-    border: none;
-    border-radius: 12px;
-    display: block;
-    margin: 0 auto 2rem auto;
-}
-
-.spotify-embed-blog {
-    width: 100%;
-    max-width: 800px;
-    height: 80px;
-    max-height: 80px !important;
-    border: none;
-    border-radius: 12px;
-    display: block;
-    margin: 1rem auto 3rem auto;
-}
-
 .content-container {
     max-width: 1000px;
     /* You can adjust this width */
@@ -322,13 +313,11 @@ iframe {
 
 /* Footer Styling */
 footer {
-    height: 100px;
     width: 100%;
     text-align: center;
     color: white;
-    margin-top: 10px;
-    position: relative;
-    bottom: 0;
+    position: static;
+    margin-top: auto;
     left: 0;
     box-sizing: border-box;
     padding: 0;
