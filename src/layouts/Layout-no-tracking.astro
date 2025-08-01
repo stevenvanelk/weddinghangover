@@ -8,6 +8,8 @@ import Footer from '../components/Footer.astro';
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<slot name="head" />
 		<link rel="icon" type="image/x-icon" href="/images/global/favicon.ico" />
 		<link rel="preload" href={montserratUrl} as="font" type="font/woff2" crossorigin>
 	    <link rel="preload" href={garamondUrl} as="font" type="font/woff2" crossorigin>
@@ -27,13 +29,11 @@ import Footer from '../components/Footer.astro';
 			font-display: swap;
 		}`}></style>
 		<link rel="stylesheet" href="/css/global.css" />
-		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<meta property="og:title" content="Wedding Photo Hangover" />
 		<meta property="og:description" content="An irreverent look at wedding photography." />
 		<meta property="og:image" content="/images/header/WPH_CleanNB_LOGO.webp" />
 		<meta name="robots" content="noindex">
-		<slot name="head" />
 	</head>
 	<body>
 		<Header />
