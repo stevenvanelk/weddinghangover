@@ -3,7 +3,6 @@ import Layout from '../../../layouts/Layout.astro';
 import HeroImg from '../../../components/HeroImg.astro';
 import { getCollection } from 'astro:content';
 import { slugify } from '../../../utils/slugify';
-import '../../../styles/blogStyles.css';
 import tagSpecialGuest from '../../../images/tags/special-guest.webp';
 import tagSatire from '../../../images/tags/satire.webp';
 import tagPhotographyTips from '../../../images/tags/photography-tips.webp';
@@ -91,6 +90,7 @@ const heroImage = tagHeroMap[tagSlug as keyof typeof tagHeroMap] ?? heroImg;
     <meta property="og:title" content={`Posts tagged "${originalTag}" – Wedding Photo Hangover`} />
     <meta property="og:description" content={`Photography podcast episodes and blog posts tagged with "${originalTag}".`} />
     <meta property="og:image" content="/images/global/WPH_Wide_CleanNB.webp" />
+    <link rel="stylesheet" href="/css/blogStyles.css" />
   </Fragment>
   <main>
     <HeroImg 

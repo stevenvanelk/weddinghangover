@@ -5,7 +5,6 @@ import { Image } from 'astro:assets';
 import heroImg from '../images/guests/guests.webp';
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from 'astro:content';
-import "../styles/blogStyles.css";
 
 const allPosts = await getCollection("episodes");
 const recentPosts = (allPosts as CollectionEntry<'episodes'>[])
@@ -36,6 +35,7 @@ const recentPosts = (allPosts as CollectionEntry<'episodes'>[])
         <meta itemprop="description" content="Catch all the Wedding Photo Hangover podcast episodes featuring amazing special guests from the world of wedding photography and beyond." />
         <meta itemprop="url" content="https://weddinghangover.com/special-guests" />
         <meta itemprop="image" content="/images/guests/guests.webp" />
+        <link rel="stylesheet" href="/css/blogStyles.css" />
     </Fragment>
 <main>
     <HeroImg 

@@ -3,7 +3,6 @@ import Layout from "../../layouts/Layout.astro";
 import { getEntry, getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Hero from "../../components/Hero.astro";
-import "../../styles/blogStyles.css";
 import SEO from "../../components/SEO.astro";
 import { slugify } from "../../utils/slugify";
 
@@ -50,6 +49,7 @@ const olderPost = allPosts[currentIndex + 1]; // Older post (later in the list)
       pubDate={post.data.pubDate}
       canonicalUrl={`/blog/${post.slug}`}
     />
+    <link rel="stylesheet" href="/css/blogStyles.css" />
   </Fragment>
   <main>
     <Hero title={post.data.title} background={post.data.image} />
