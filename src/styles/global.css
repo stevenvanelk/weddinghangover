@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    height: 100%;
+}
+
 body {
     font-family: 'Garamond', Georgia, 'Times New Roman', Times, serif;
     background-color: white;
@@ -13,6 +18,13 @@ body {
     /* Ensures there's no margin around the body */
     padding: 0;
     /* Ensures there's no padding around the body */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
 }
 
 /* Header Styling */
@@ -322,13 +334,12 @@ iframe {
 
 /* Footer Styling */
 footer {
-    height: 100px;
+    height: auto;
     width: 100%;
     text-align: center;
     color: white;
-    margin-top: 10px;
-    position: relative;
-    bottom: 0;
+    position: static;
+    margin-top: auto;
     left: 0;
     box-sizing: border-box;
     padding: 0;
@@ -382,7 +393,7 @@ footer a:hover {
 .footer-social-heading {
     margin: 0;
     font-size: 16px;
-    line-height:1.25;
+    line-height: 1.25;
     font-weight: 400;
     text-transform: none;
     color: white;
