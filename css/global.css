@@ -25,6 +25,7 @@ body {
 
 main {
     flex: 1;
+    padding-bottom: 1rem;
 }
 
 /* Header Styling */
@@ -351,7 +352,7 @@ footer a:hover {
     width: 100%;
     background: #666666;
     color: white;
-    padding: 0.5rem 0;
+    padding: 0.65rem 0;
     box-sizing: border-box;
     margin: 0 auto;
 }
