@@ -11,12 +11,11 @@ export interface Props {
 const {
   title,
   background,
-  height = '40vh',
   overlay = true
 } = Astro.props;
 ---
 
-<section class="hero-two" style={`height: ${height};`}>
+<section class="hero-two">
   <Image
     src={background}
     alt={title}
