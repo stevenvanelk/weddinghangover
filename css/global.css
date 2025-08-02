@@ -159,7 +159,7 @@ nav ul li a:hover {
     /* or whatever looks best */
     font-weight: 600;
     font-style: italic;
-    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Montserrat-SemiBold', 'Helvetica Neue', Arial, sans-serif;
     text-transform: uppercase;
     color: white !important;
     letter-spacing: 2px;
