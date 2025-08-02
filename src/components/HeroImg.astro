@@ -11,6 +11,7 @@ export interface Props {
 const {
   title,
   background,
+  height = '500px',
   overlay = true
 } = Astro.props;
 ---
@@ -19,7 +20,8 @@ const {
   <Image
     src={background}
     alt={title}
-    width={3000}
+    width={background.width}
+    height={background.height}
     sizes="100vw"
     layout="constrained"
     format="webp"
