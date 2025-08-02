@@ -751,6 +751,12 @@ h2 {
     margin-bottom: 2rem !important;
 }
 
+@media (min-width: 769px) {
+    .hero-two {
+        min-height: 560px;
+    }
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .hero-title {
