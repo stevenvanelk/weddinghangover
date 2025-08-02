@@ -36,6 +36,7 @@ const recentPosts = (allPosts as CollectionEntry<'episodes'>[])
         <meta itemprop="url" content="https://weddinghangover.com/special-guests" />
         <meta itemprop="image" content="/images/guests/guests.webp" />
         <link rel="stylesheet" href="/css/blogStyles.css" />
+        <link rel="preload" as="image" href={heroImg.src} type="image/webp" fetchpriority="high" />
     </Fragment>
 <main>
     <HeroImg 

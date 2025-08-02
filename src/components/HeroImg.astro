@@ -21,12 +21,14 @@ const {
     src={background}
     alt={title}
     width={3000}
+    sizes="100vw"
     layout="constrained"
     format="webp"
     quality={80}
     class="hero-image"
     priority
     fetchpriority="high"
+    decoding="async"
   />
 
   {overlay && (
