@@ -90,8 +90,7 @@ const heroImage = tagHeroMap[tagSlug as keyof typeof tagHeroMap] ?? heroImg;
     <meta property="og:title" content={`Posts tagged "${originalTag}" – Wedding Photo Hangover`} />
     <meta property="og:description" content={`Photography podcast episodes and blog posts tagged with "${originalTag}".`} />
     <meta property="og:image" content="/images/global/WPH_Wide_CleanNB.webp" />
-    <link rel="preload" href="/css/blogStyles.css" as="style" onload="this.rel='stylesheet'">
-		<noscript><link rel="stylesheet" href="/css/blogStyles.css"></noscript>
+    <link rel="stylesheet" href="/css/blogStyles.css" />
     <link rel="preload" as="image" href={heroImg.src} type="image/webp" fetchpriority="high" />
   </Fragment>
   <main>

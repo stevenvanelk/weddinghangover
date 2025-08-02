@@ -49,8 +49,7 @@ const olderPost = allPosts[currentIndex + 1]; // Older post (later in the list)
       pubDate={post.data.pubDate}
       canonicalUrl={`/blog/${post.slug}`}
     />
-    <link rel="preload" href="/css/blogStyles.css" as="style" onload="this.rel='stylesheet'">
-		<noscript><link rel="stylesheet" href="/css/blogStyles.css"></noscript>
+    <link rel="stylesheet" href="/css/blogStyles.css" />
   </Fragment>
   <main>
     <Hero title={post.data.title} background={post.data.image} />
