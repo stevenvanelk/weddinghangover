@@ -66,7 +66,8 @@ const paginationItems = Array.from({ length: totalPages }, (_, i) => i + 1)
     <meta property="og:title" content={`Wedding Photo Hangover Blog – Page 1`} />
     <meta property="og:description" content="Explore more posts from the Wedding Photo Hangover podcast blog." />
     <meta property="og:image" content="/images/global/WPH_Wide_CleanNB.webp" />
-    <link rel="stylesheet" href="/css/blogStyles.css" />
+    <link rel="preload" href="/css/blogStyles.css" as="style" onload="this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="/css/blogStyles.css"></noscript>
     <link rel="preload" as="image" href={heroImg.src} type="image/webp" fetchpriority="high" />
 </Fragment>
 
