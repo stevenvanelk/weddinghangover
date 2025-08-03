@@ -89,16 +89,17 @@ import patreonImg from '../images/index/wph-patreon.webp';
       </section>
 
       <section class="card card-left">
-        <Image
-          src={communityImg}
-          alt="Wedding Photo Hangover Community"
-          width={450}
-          quality={70}
-          height={450}
-          sizes="(max-width: 768px) 300px, 450px"
-          format="webp"
-          class="card-image"
-        />
+        <picture>
+          <source srcset="/images/index/wph-community-small.webp" media="(max-width: 768px)" type="image/webp" />
+          <img
+            src="/images/index/wph-community-new.webp"
+            alt="Wedding Photo Hangover Community"
+            fetchpriority="high"
+            decoding="async"
+            loading="eager"
+            class="card-image"
+          />
+        </picture>
         <div class="card-content">
           <h3>Community</h3>
           <p>
@@ -109,16 +110,18 @@ import patreonImg from '../images/index/wph-patreon.webp';
       </section>
 
       <section class="card card-right">
-        <Image
-          src={patreonImg}
-          alt="Support Wedding Photo Hangover on Patreon"
-          width={450}
-          height={450}
-          quality={70}
-          sizes="(max-width: 768px) 300px, 450px"
-          format="webp"
-          class="card-image"
-        />
+        <picture>
+          <source srcset="/images/index/wph-patreon-small.webp" media="(max-width: 768px)" type="image/webp" />
+          <img
+            src="/images/index/wph-patreon-new.webp"
+            srcset=""
+            alt="Support Wedding Photo Hangover on Patreon"
+            fetchpriority="high"
+            decoding="async"
+            loading="eager"
+            class="card-image"
+          />
+        </picture>
         <div class="card-content">
           <h3>Support</h3>
           <p>
