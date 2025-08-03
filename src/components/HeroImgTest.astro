@@ -2,9 +2,6 @@
 export interface Props {
   alt: string;
   heading: string;
-  subheading?: string;
-  ctaLabel?: string;
-  ctaUrl?: string;
   image: string;
   imageSmall: string;
   imageMedium: string;
@@ -13,38 +10,29 @@ export interface Props {
 const {
   alt,
   heading,
-  subheading,
-  ctaLabel,
-  ctaUrl,
   image,
   imageSmall,
   imageMedium
 } = Astro.props;
 ---
 
-<section class="hero">
+<section class="hero-three">
   <picture>
-    <source srcset={imageSmall} media="(max-width: 640px)" type="image/webp" />
-    <source srcset={imageMedium} media="(max-width: 1024px)" type="image/webp" />
+    <source srcset={image} media="(min-width: 769px)" type="image/webp" />
+    <source srcset={imageMedium} media="(min-width: 641px)" type="image/webp" />
+    <source srcset={imageSmall} media="(max-width: 480px)" type="image/webp" />
     <img
       src={image}
       alt={alt}
-      width="1600"
-      height="1067"
       fetchpriority="high"
       decoding="async"
       loading="eager"
-      class="hero-img"
+      class="hero-image"
     />
-  </picture>
 
   <div class="hero-text">
     <div class="hero-content">
-      <h1>{heading}</h1>
-      {subheading && <p>{subheading}</p>}
-      {ctaUrl && ctaLabel && (
-        <a href={ctaUrl} class="cta-button">{ctaLabel}</a>
-      )}
+      <h2 class="hero-title">{heading}</h2>
     </div>
   </div>
 </section>

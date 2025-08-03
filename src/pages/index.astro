@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import HeroImg from '../components/HeroImg.astro';
+import HeroImgTest from '../components/HeroImgTest.astro';
 import { Image } from 'astro:assets';
 import heroImg from '../images/index/wph-hero.webp';
 import communityImg from '../images/index/wph-community.webp';
@@ -33,9 +33,12 @@ import patreonImg from '../images/index/wph-patreon.webp';
   </Fragment>
 
   <main>
-    <HeroImg 
-      title="An Irreverent Look at Photography" 
-      background={heroImg}
+    <HeroImgTest 
+      alt="Wedding Photo Hangover"
+      heading="An Irreverent Look at Photography"
+      image="/images/index/wph-hero-new.webp"
+      imageMedium="/images/index/wph-hero-medium.webp"
+      imageSmall="/images/index/wph-hero-small.webp"
     />
     <div class="content-container">
 
