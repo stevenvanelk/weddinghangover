@@ -975,8 +975,10 @@ h2 {
         text-align: center;
     }
 
-    .card img {
-        max-width: 100%;
+    .card img,
+    .card-image {
+        max-width: 300px;
+        height: auto;
     }
 
     .footer-social-container {
