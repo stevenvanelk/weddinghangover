@@ -109,11 +109,11 @@ nav ul li a:hover {
     padding: 0;
     margin: 0;
     border-radius: 0;
-    height: 500px;
+    height: 400px;
 }
 
 .hero-two {
-    height: 500px;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -877,12 +877,12 @@ h2 {
     }
 
     .hero-two {
-        height: 320px;
+        height: 400px;
         /* or even 280px for small phones */
     }
 
     .hero {
-        height: 320px;
+        height: 400px;
         /* or even 280px for small phones */
     }
 
