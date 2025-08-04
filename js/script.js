@@ -10,6 +10,13 @@ document.addEventListener("DOMContentLoaded", function () {
             nav.classList.toggle("nav-active");
             console.log("Current nav classList:", nav.classList);
         });
+
+        // 👇 Auto-close overlay menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('nav-active');
+            });
+        });
     } else {
         console.error("Error: menu-toggle or nav-links not found in DOM.");
     }
