@@ -611,7 +611,7 @@ footer a:hover {
 
 .card img {
     width: 100%;
-    max-width: 450px;
+    max-width: 350px;
     height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -619,7 +619,7 @@ footer a:hover {
 
 .card-image {
     width: 100%;
-    max-width: 450px;
+    max-width: 350px;
     height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -875,7 +875,25 @@ h2 {
     border-radius: 12px;
     display: block;
     margin: 0 auto 2rem auto;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 1;
     z-index: 10;
+}
+
+.spotify-embed.preloaded {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+}
+
+.spotify-embed.fade-in {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
 }
 
 .spotify-embed-blog {
