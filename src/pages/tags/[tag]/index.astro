@@ -8,6 +8,7 @@ import tagSatire from '../../../images/tags/satire.webp';
 import tagPhotographyTips from '../../../images/tags/photography-tips.webp';
 import tagHolidaySpecial from '../../../images/tags/holiday-special.webp';
 import heroImg from '../../../images/episodes/wph-podcast-hero.webp';
+import { formatDateUTC } from "../../../utils/formatDate";
 
 const tagHeroMap = {
   'special-guest': tagSpecialGuest,
@@ -116,7 +117,7 @@ const heroImage = tagHeroMap[tagSlug as keyof typeof tagHeroMap] ?? heroImg;
                 </a>
                 <p class="blog-card-description">{post.data.description}</p>
                 <a href={`/${post.collection}/${post.slug}/`}>
-                  <p class="blog-card-date">{post.data.pubDate.toLocaleDateString()}</p>
+                  <p class="blog-card-date">{formatDateUTC(post.data.pubDate)}</p>
                 </a>
               </div>
             </div>

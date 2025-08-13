@@ -5,6 +5,7 @@ import { Image } from 'astro:assets';
 import heroImg from '../images/guests/guests.webp';
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from 'astro:content';
+import { formatDateUTC } from "../utils/formatDate";
 
 const allPosts = await getCollection("episodes");
 const recentPosts = (allPosts as CollectionEntry<'episodes'>[])
@@ -58,7 +59,7 @@ const recentPosts = (allPosts as CollectionEntry<'episodes'>[])
             </a>
             <p class="blog-card-description">{post.data.description}</p>
             <a href={`/blog/${post.slug}/`}>
-                <p class="blog-card-date">{new Date(post.data.pubDate).toLocaleDateString()}</p>
+                <p class="blog-card-date">{formatDateUTC(post.data.pubDate)}</p>
             </a>
             </div>
         </div>

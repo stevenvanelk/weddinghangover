@@ -5,6 +5,7 @@ import type { CollectionEntry } from "astro:content";
 import Hero from "../../components/Hero.astro";
 import SEO from "../../components/SEO.astro";
 import { slugify } from "../../utils/slugify";
+import { formatDateUTC } from "../../utils/formatDate";
 
 const slug = Array.isArray(Astro.params.slug)
   ? Astro.params.slug.join("/")
@@ -30,10 +31,15 @@ export async function getStaticPaths() {
   }));
 }
 
-const allEpisodes = (await getCollection("episodes")) as CollectionEntry<"episodes">[];
+const allEpisodes = (await getCollection(
+  "episodes"
+)) as CollectionEntry<"episodes">[];
 
 // Sort by date descending (newest first)
-allEpisodes.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+allEpisodes.sort(
+  (a, b) =>
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
 
 // Find current index
 const currentIndex = allEpisodes.findIndex((p) => p.slug === episode.slug);
@@ -59,38 +65,52 @@ const olderEpisode = allEpisodes[currentIndex + 1];
       <div class="rich-content">
         <h1 class="post-title">{episode.data.title}</h1>
         <p class="date-published">
-          {episode.data.pubDate.toLocaleDateString()}
+          {formatDateUTC(episode.data.pubDate)}
         </p>
 
         <article>
           <Content />
         </article>
-        {episode.data.tags && episode.data.tags.length > 0 && (
-          <div class="post-tags">
-            <h3>Tags:</h3>
-            <div class="tag-list">
-              {episode.data.tags.map((tag: string) => (
-                <a href={`/tags/${slugify(tag)}/`} rel="tag">#{tag}</a>
-              ))}
+        {
+          episode.data.tags && episode.data.tags.length > 0 && (
+            <div class="post-tags">
+              <h3>Tags:</h3>
+              <div class="tag-list">
+                {episode.data.tags.map((tag: string) => (
+                  <a href={`/tags/${slugify(tag)}/`} rel="tag">
+                    #{tag}
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )
+        }
         <nav class="post-navigation">
           <div class="nav-col">
-            {newerEpisode && (
-              <a href={`/episodes/${newerEpisode.slug}`} class="nav-link newer">
-                <span class="nav-label">← Newer Episode</span>
-                <span class="nav-title">{newerEpisode.data.title}</span>
-              </a>
-            )}
+            {
+              newerEpisode && (
+                <a
+                  href={`/episodes/${newerEpisode.slug}`}
+                  class="nav-link newer"
+                >
+                  <span class="nav-label">← Newer Episode</span>
+                  <span class="nav-title">{newerEpisode.data.title}</span>
+                </a>
+              )
+            }
           </div>
           <div class="nav-col">
-            {olderEpisode && (
-              <a href={`/episodes/${olderEpisode.slug}`} class="nav-link older">
-                <span class="nav-label">Older Episode →</span>
-                <span class="nav-title">{olderEpisode.data.title}</span>
-              </a>
-            )}
+            {
+              olderEpisode && (
+                <a
+                  href={`/episodes/${olderEpisode.slug}`}
+                  class="nav-link older"
+                >
+                  <span class="nav-label">Older Episode →</span>
+                  <span class="nav-title">{olderEpisode.data.title}</span>
+                </a>
+              )
+            }
           </div>
         </nav>
       </div>

@@ -11,6 +11,7 @@ const episodes = defineCollection({
     embedUrl: z.string().optional(),
     tags: z.array(z.string()).optional(),
     author: z.string().optional(),
+    draft: z.boolean().default(false),
   }),
 });
 
@@ -23,6 +24,7 @@ const blog = defineCollection({
     image: z.string().optional(),
     tags: z.array(z.string()).optional(),
     author: z.string().optional(),
+    draft: z.boolean().default(false),
   }),
 });
 
