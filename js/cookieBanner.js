@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Dynamically add Google Analytics script if user accepts cookies
         let analyticsScript = document.createElement("script");
         analyticsScript.async = true;
-        analyticsScript.src = "https://www.googletagmanager.com/gtag/js?id=G-BTZB8426Q1";
+        analyticsScript.src = "https://www.googletagmanager.com/gtag/js?id=G-MEX5S05GEQ";
         document.head.appendChild(analyticsScript);
 
         let analyticsInit = document.createElement("script");
@@ -52,13 +52,13 @@ document.addEventListener("DOMContentLoaded", function () {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-BTZB8426Q1');
+            gtag('config', 'G-MEX5S05GEQ');
         `;
         document.head.appendChild(analyticsInit);
     }
 
     function disableTracking() {
         // Block Google Analytics script
-        window['ga-disable-G-BTZB8426Q1'] = true;
+        window['ga-disable-G-MEX5S05GEQ'] = true;
     }
 });
